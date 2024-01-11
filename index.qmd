@@ -13,3 +13,7 @@ Welcome to **my website** and _data analysis portfolio._
 * Have fun!
 
 **Feel free to change this text any way you want 😁!**
+
+install.packages("here")
+install.packages("skimr")
+install.packages("readxl")
