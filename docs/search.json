@@ -53,7 +53,7 @@
     "href": "index.html",
     "title": "My website and data analysis portfolio",
     "section": "",
-    "text": "Hello\n\nAnd hello again\nWelcome to my website and data analysis portfolio.\n\nPlease use the Menu Bar above to look around.\nHave fun!\n\nFeel free to change this text any way you want 😁!\ninstall.packages(“here”) install.packages(“skimr”) install.packages(“readxl”)"
+    "text": "Hello my name is Arlyn Santiago\n\nWelcome to my website and data analysis portfolio.\n\nPlease use the Menu Bar above to look around.\nFeel free to reach out to me at arlyn.santiago548@gmail.com!"
   },
   {
     "objectID": "tidytuesday-exercise/tidytuesday-exercise.html",
@@ -72,9 +72,9 @@
   {
     "objectID": "aboutme.html",
     "href": "aboutme.html",
-    "title": "About me",
+    "title": "About Me",
     "section": "",
-    "text": "Add some text and a figure describing myself.\nFor details, see the exercise instructions."
+    "text": "Hello, My name is Arlyn Santiago. I am excited to learn more about analyzing and interpreting data. My family is from Puerto Rico, but I was born in New Jersey and moved around a lot. Fun Fact: I’ve lived in seven different places- including three different countries! I went to the University of Georgia for my undergraduate degree in Enivronmental Health Science to pursue a career in public health. I decided to complete a Master of Public Health degree with a concentration in Epidemiology to determine what I wanted to focus on as a career."
   },
   {
     "objectID": "presentation-exercise/presentation-exercise.html",
@@ -208,5 +208,26 @@
     "title": "Arlyn Santiago Data Analysis Portfolio",
     "section": "",
     "text": "This folder contains a simple made-up data-set in an Excel file.\nIt contains the variables Height, Weight and Gender of a few imaginary individuals.\nThe dataset purposefully contains some faulty entries that need to be cleaned.\nGenerally, any dataset should contain some meta-data explaining what each variable in the dataset is. (This is often called a Codebook.) For this simple example, the codebook is given as a second sheet in the Excel file.\nThis raw data-set should generally not be edited by hand. It should instead be loaded and processed/cleaned using code."
+  },
+  {
+    "objectID": "aboutme.html#interests",
+    "href": "aboutme.html#interests",
+    "title": "About Me",
+    "section": "Interests:",
+    "text": "Interests:\nI am interested in studying disease distribution and methods of prevention for tropical infectious diseases. However, I have been learning more reproductive health from my EPID 7600, and have been more interested in this field."
+  },
+  {
+    "objectID": "aboutme.html#experience",
+    "href": "aboutme.html#experience",
+    "title": "About Me",
+    "section": "Experience:",
+    "text": "Experience:\nAdmittedly, even creating this website has been a huge learning curve for me! I do have experience in coding in R through taking a course called EPID 7500."
+  },
+  {
+    "objectID": "aboutme.html#interesting-website",
+    "href": "aboutme.html#interesting-website",
+    "title": "About Me",
+    "section": "Interesting website:",
+    "text": "Interesting website:\nhttps://earth911.com\nEarth 911 is an organization that connects people with information about helping the earth. This website helps you find where you recycle your electronics."
   }
 ]

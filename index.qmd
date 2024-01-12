@@ -2,18 +2,11 @@
 title: "My website and data analysis portfolio"
 ---
 
-# Hello
+# Hello my name is Arlyn Santiago
 
-### And hello again
+![](Resume%20picture(1).jpg)
 
-Welcome to **my website** and _data analysis portfolio._ 
+Welcome to **my website** and *data analysis portfolio.*
 
-
-* Please use the `Menu Bar` above to look around.
-* Have fun!
-
-**Feel free to change this text any way you want 😁!**
-
-install.packages("here")
-install.packages("skimr")
-install.packages("readxl")
+-   Please use the `Menu Bar` above to look around.
+-   Feel free to reach out to me at arlyn.santiago548\@gmail.com!

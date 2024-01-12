@@ -1,7 +1,20 @@
----
-title: "About me"
----
 
-Add some text and a figure describing myself.
+---
+title: "About Me" 
+---
+Hello, My name is Arlyn Santiago. I am excited to learn more about analyzing and interpreting data. My family is from Puerto Rico, but I was born in New Jersey and moved around a lot. Fun Fact: I've lived in seven different places- including three different countries! I went to the University of Georgia for my undergraduate degree in Enivronmental Health Science to pursue a career in public health. I decided to complete a Master of Public Health degree with a concentration in Epidemiology to determine what I wanted to focus on as a career.
 
-For details, see the exercise instructions. 
+## Interests:
+I am interested in studying disease distribution and methods of prevention for tropical infectious diseases. However, I have been learning more reproductive health from my EPID 7600, and have been more interested in this field.
+
+
+## Experience:
+Admittedly, even creating this website has been a huge learning curve for me! I do have experience in coding in R through taking a course called EPID 7500. 
+
+
+
+## Interesting website:
+https://earth911.com
+
+Earth 911 is an organization that connects people with information about helping the earth. This website helps you find where you recycle your electronics.
+
