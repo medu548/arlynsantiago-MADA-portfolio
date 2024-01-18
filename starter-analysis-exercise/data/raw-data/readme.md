@@ -1,6 +1,6 @@
 This folder contains a simple made-up data-set in an Excel file.
 
-It contains the variables `Height`, `Weight` and `Gender` of a few imaginary individuals.
+It contains the variables `Age`, `Sex`, `Number of People Living in Houshold` and `Education Level` of 15 imaginary individuals.
 
 The dataset purposefully contains some faulty entries that need to be cleaned.
 
