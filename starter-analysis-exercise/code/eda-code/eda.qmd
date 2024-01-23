@@ -129,11 +129,11 @@ figure_file = here("starter-analysis-exercise","results","figures","Number_of_Pe
 ggsave(filename = figure_file, plot=p6) 
 ```
 
-# HC_time vs. height
+# Age vs. height
 
 ```{r}
-p7 <- mydata %>% ggplot(aes(x=Height, y=HC_time)) + geom_point() + geom_smooth(method='lm')
+p7 <- mydata %>% ggplot(aes(x=Height, y=Age)) + geom_point() + geom_smooth(method='lm')
 plot(p7)
-figure_file = here("starter-analysis-exercise","results","figures","HC_time-height.png")
+figure_file = here("starter-analysis-exercise","results","figures","Age-height.png")
 ggsave(filename = figure_file, plot=p7) 
 ```

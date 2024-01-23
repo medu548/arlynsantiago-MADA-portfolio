@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
-<meta name="dcterms.date" content="2024-01-16">
+<meta name="author" content="Arlyn Santiago">
+<meta name="dcterms.date" content="2024-01-19">
 
 <title>Arlyn Santiago Data Analysis Portfolio - Manuscript/Report Template for a Data Analysis Project</title>
 <style>
@@ -171,14 +171,14 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
+             <p>Arlyn Santiago </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 16, 2024</p>
+      <p class="date">January 19, 2024</p>
     </div>
   </div>
   
@@ -190,6 +190,7 @@ div.csl-indent {
 </header>
 
 
+<p>Xylem Hu contributed to this exercise.</p>
 <p>The structure below is one possible setup for a data analysis project (including the course project). For a manuscript, adjust as needed. You don’t need to have exactly these sections, but the content covering those sections should be addressed.</p>
 <p>This uses MS Word as output format. <a href="https://quarto.org/docs/output-formats/ms-word.html">See here</a> for more information. You can switch to other formats, like html or pdf. See <a href="https://quarto.org/">the Quarto documentation</a> for other formats.</p>
 <section id="summaryabstract" class="level1" data-number="1">
@@ -235,106 +236,40 @@ div.csl-indent {
 <section id="results" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Results</h1>
 <section id="exploratorydescriptive-analysis" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="exploratorydescriptive-analysis"><span class="header-section-number">4.1</span> Exploratory/Descriptive analysis</h2>
-<p><em>Use a combination of text/tables/figures to explore and describe your data. Show the most important descriptive results here. Additional ones should go in the supplement. Even more can be in the R and Quarto files that are part of your project.</em></p>
-<p><a href="#tbl-summarytable" class="quarto-xref">Table&nbsp;1</a> shows a summary of the data.</p>
-<p>Note the loading of the data providing a <strong>relative</strong> path using the <code>../../</code> notation. (Two dots means a folder up). You never want to specify an <strong>absolute</strong> path like <code>C:\ahandel\myproject\results\</code> because if you share this with someone, it won’t work for them since they don’t have that path. You can also use the <code>here</code> R package to create paths. See examples of that below. <strong>I recommend the <code>here</code> package, but I’m showing the other approach here just in case you encounter it.</strong></p>
+<h2 data-number="4.1" class="anchored" data-anchor-id="exploratorydescriptive-analysis"><span class="header-section-number">4.1</span> 4.1 Exploratory/Descriptive analysis</h2>
+<p>View the tables and figures below for a better understanding of the data.</p>
 <div class="cell">
-<div id="tbl-summarytable" class="cell quarto-float anchored">
+<div id="tbl-resulttable1" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summarytable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Data summary table.
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-resulttable1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: this table explores the impact of Height on Weight.
 </figcaption>
-<div aria-describedby="tbl-summarytable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-resulttable1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 9%">
-<col style="width: 6%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 6%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">skim_type</th>
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: left;">factor.ordered</th>
-<th style="text-align: right;">factor.n_unique</th>
-<th style="text-align: left;">factor.top_counts</th>
-<th style="text-align: right;">numeric.mean</th>
-<th style="text-align: right;">numeric.sd</th>
-<th style="text-align: right;">numeric.p0</th>
-<th style="text-align: right;">numeric.p25</th>
-<th style="text-align: right;">numeric.p50</th>
-<th style="text-align: right;">numeric.p75</th>
-<th style="text-align: right;">numeric.p100</th>
-<th style="text-align: left;">numeric.hist</th>
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">Gender</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">M: 4, F: 3, O: 2</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">142.1032145</td>
+<td style="text-align: right;">17.8704060</td>
+<td style="text-align: right;">7.951874</td>
+<td style="text-align: right;">0.0000232</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">numeric</td>
-<td style="text-align: left;">Height</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">165.66667</td>
-<td style="text-align: right;">15.97655</td>
-<td style="text-align: right;">133</td>
-<td style="text-align: right;">156</td>
-<td style="text-align: right;">166</td>
-<td style="text-align: right;">178</td>
-<td style="text-align: right;">183</td>
-<td style="text-align: left;">▂▁▃▃▇</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">numeric</td>
 <td style="text-align: left;">Weight</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">70.11111</td>
-<td style="text-align: right;">21.24526</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">80</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: left;">▇▂▃▂▂</td>
+<td style="text-align: right;">0.3546641</td>
+<td style="text-align: right;">0.2442839</td>
+<td style="text-align: right;">1.451852</td>
+<td style="text-align: right;">0.1804937</td>
 </tr>
 </tbody>
 </table>
@@ -343,35 +278,18 @@ Table&nbsp;1: Data summary table.
 </figure>
 </div>
 </div>
+<p>The figure below demonstrates the impact of the Number of People in Household on Weight:</p>
+<p><img src="images/Number_of_People_in_Household-weight.png" class="img-fluid"></p>
+<p>The figure below demonstrates the impact of the Number of People in Household on Height:</p>
+<p><img src="images/Number_of_People_in_Household-height-01.png" class="img-fluid"></p>
 </section>
 <section id="basic-statistical-analysis" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="basic-statistical-analysis"><span class="header-section-number">4.2</span> Basic statistical analysis</h2>
-<p><em>To get some further insight into your data, if reasonable you could compute simple statistics (e.g.&nbsp;simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any “p&lt;0.05 means statistical significance” interpretation is not valid.</em></p>
-<p><a href="#fig-result" class="quarto-xref">Figure&nbsp;1</a> shows a scatterplot figure produced by one of the R scripts.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-result" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../../results/figures/height-weight-stratified.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Height and weight stratified by gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="full-analysis" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="full-analysis"><span class="header-section-number">4.3</span> Full analysis</h2>
-<p><em>Use one or several suitable statistical/machine learning methods to analyze your data and to produce meaningful figures, tables, etc. This might again be code that is best placed in one or several separate R scripts that need to be well documented. You want the code to produce figures and data ready for display as tables, and save those. Then you load them here.</em></p>
-<p>Example <a href="#tbl-resulttable2" class="quarto-xref">Table&nbsp;2</a> shows a summary of a linear model fit.</p>
+<h2 data-number="4.2" class="anchored" data-anchor-id="basic-statistical-analysis"><span class="header-section-number">4.2</span> 4.2 Basic statistical analysis</h2>
 <div class="cell">
 <div id="tbl-resulttable2" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-resulttable2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Linear model fit table.
+Table&nbsp;2: this table explores the impact of height on Weight and Gender.
 </figcaption>
 <div aria-describedby="tbl-resulttable2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -408,6 +326,20 @@ Table&nbsp;2: Linear model fit table.
 <td style="text-align: right;">0.8966520</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">GenderN</td>
+<td style="text-align: right;">-8.4421463</td>
+<td style="text-align: right;">22.1617742</td>
+<td style="text-align: right;">-0.3809328</td>
+<td style="text-align: right;">0.7189016</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GenderNA</td>
+<td style="text-align: right;">19.1115539</td>
+<td style="text-align: right;">24.6897029</td>
+<td style="text-align: right;">0.7740698</td>
+<td style="text-align: right;">0.4738817</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">GenderO</td>
 <td style="text-align: right;">-4.7644739</td>
 <td style="text-align: right;">19.0114155</td>
@@ -421,6 +353,210 @@ Table&nbsp;2: Linear model fit table.
 </figure>
 </div>
 </div>
+<p>The figure below demonstrates the impact of the Age on Height <img src="images/Age-height.png" class="img-fluid"></p>
+</section>
+<section id="exploratorydescriptive-analysis-1" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="exploratorydescriptive-analysis-1"><span class="header-section-number">4.3</span> Exploratory/Descriptive analysis</h2>
+<p><em>Use a combination of text/tables/figures to explore and describe your data. Show the most important descriptive results here. Additional ones should go in the supplement. Even more can be in the R and Quarto files that are part of your project.</em></p>
+<p>This table shows a summary of the data.</p>
+<p>Note the loading of the data providing a <strong>relative</strong> path using the <code>../../</code> notation. (Two dots means a folder up). You never want to specify an <strong>absolute</strong> path like <code>C:\ahandel\myproject\results\</code> because if you share this with someone, it won’t work for them since they don’t have that path. You can also use the <code>here</code> R package to create paths. See examples of that below. <strong>I recommend the <code>here</code> package, but I’m showing the other approach here just in case you encounter it.</strong></p>
+<div class="cell">
+<div id="tbl-summarytable" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-summarytable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Data summary table.
+</figcaption>
+<div aria-describedby="tbl-summarytable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_type</th>
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">character.min</th>
+<th style="text-align: right;">character.max</th>
+<th style="text-align: right;">character.empty</th>
+<th style="text-align: right;">character.n_unique</th>
+<th style="text-align: right;">character.whitespace</th>
+<th style="text-align: left;">factor.ordered</th>
+<th style="text-align: right;">factor.n_unique</th>
+<th style="text-align: left;">factor.top_counts</th>
+<th style="text-align: right;">numeric.mean</th>
+<th style="text-align: right;">numeric.sd</th>
+<th style="text-align: right;">numeric.p0</th>
+<th style="text-align: right;">numeric.p25</th>
+<th style="text-align: right;">numeric.p50</th>
+<th style="text-align: right;">numeric.p75</th>
+<th style="text-align: right;">numeric.p100</th>
+<th style="text-align: left;">numeric.hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">NPH</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">Gender</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">M: 4, F: 3, O: 2, N: 1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">Height</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">167.09091</td>
+<td style="text-align: right;">16.81341</td>
+<td style="text-align: right;">133</td>
+<td style="text-align: right;">155.5</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">179.0</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: left;">▂▇▅▇▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">Weight</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">70.45455</td>
+<td style="text-align: right;">20.65122</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">54.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">85.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: left;">▇▂▃▃▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">40.09091</td>
+<td style="text-align: right;">30.04149</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">73.5</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: left;">▃▆▃▁▇</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="basic-statistical-analysis-1" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="basic-statistical-analysis-1"><span class="header-section-number">4.4</span> Basic statistical analysis</h2>
+<p><em>To get some further insight into your data, if reasonable you could compute simple statistics (e.g.&nbsp;simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any “p&lt;0.05 means statistical significance” interpretation is not valid.</em></p>
+<p><a href="#fig-result" class="quarto-xref">Figure&nbsp;1</a> shows a scatterplot figure produced by one of the R scripts.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-result" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../results/figures/height-weight-stratified.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-result-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Height and weight stratified by gender.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="full-analysis" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="full-analysis"><span class="header-section-number">4.5</span> Full analysis</h2>
+<p><em>Use one or several suitable statistical/machine learning methods to analyze your data and to produce meaningful figures, tables, etc. This might again be code that is best placed in one or several separate R scripts that need to be well documented. You want the code to produce figures and data ready for display as tables, and save those. Then you load them here.</em></p>
+<p>Example <a href="#tbl-resulttable1" class="quarto-xref">Table&nbsp;1</a> shows a summary of a linear model fit.</p>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
