@@ -211,7 +211,14 @@ plot_ocean <- ggplot(oceantime, aes(x=year, y=ocean_anomaly)) + geom_point() + t
 
 plot_ocean
 
-#It is apparent from the models below that carbon emissions have been increasing since 1880 with a strong tend upwards starting in about 1920. Since about 1920 the ocean temperature has also been increasing.    
+#Simple Statistical Models
+fit3 <- lm(carbon_emissions ~ ocean_anomaly, data=narrow_time)
+summary(fit3)
+
+anova_result <- aov(carbon_emissions ~ ocean_anomaly, data=narrow_time)
+summary(anova_result)
+
+#It is apparent from the models below that carbon emissions have been increasing since 1880 with a strong tend upwards starting in about 1920. Since about 1920 the ocean temperature has also been increasing.  It is apparent from the following there may be a correlation between rising carbon dioxide release and rising ocean temperatures.  
 
 ```
 
