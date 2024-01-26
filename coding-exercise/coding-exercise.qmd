@@ -1,13 +1,15 @@
 ---
 title: "R Coding Exercise"
 ---
+```{r}
 
-install.packages("dslabs")
 library("dslabs")
 
 help(gapminder)
+```
 
 #Used to examine struture/layout of data
+
 str(gapminder)
 
 #Used to examine data summary
@@ -16,17 +18,22 @@ summary(gapminder)
 #Used to determine what type of class "gapminder" is 
 class(gapminder)
 
-# Downloaded tidyverse and dplyr packages to make it easier to code
-install.packages("tidyverse")
+# Loaded tidyverse and dplyr packages to make it easier to code
+```{r}
 library("tidyverse")
-install.packages("dplyr")
 library("dplyr")
-
+library("conflicted")
+conflicts_prefer(dplyr::filter)
+```
 
 # Generate new objects containing values for African countries only
+
+```{r}
+conflicts_prefer(dplyr::filter)
+
 africadata <- gapminder %>%
   filter(continent == "Africa")
-africadata <- africadata %>% filter(continent == "Africa")
+
 
 # Using str and summary to view structure and summary of new object "africadata"
 str(africadata)
@@ -77,16 +84,16 @@ plot(Africa_LE_vs_Pop_log)
 ## creating object from africadata for the year 2000
 missing_years <- unique(africadata[is.na(africadata$infant_mortality), "year"])
 print(missing_years)
+```
+
 
 ```{r}
-# Filter data for year == 2000
-africadata_2000 <- africadata %>%
-  filter(year == "2000")
+# Filter data for year 2000
+africa2000 <- africadata %>% filter(year == "2000")
 
 
 #Examine the structure and summary of object africa2000
-str(africa2000)
-summary(africa2000)
+head(africa2000)
 
 ```
 
