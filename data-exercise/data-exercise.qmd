@@ -2,4 +2,79 @@
 title: "Week 4 Exercise"
 ---
 
-Placeholder file for the exercise.
+This exercise is designed to give you practice with exploring text datasets (a _complex data type_). We will load, process, and engage in some discriptive/exploratory analysis of the data.
+
+The data this week comes from the appa R package created by Avery Robbins. The original data came from the Avatar Wiki, and the example code used to scrape this dataset is also covered on Avery's blog along with a quick exploration of the available data in a separate blog post.
+
+
+I'm not sure if I will need these packages but I will load them all just to be sure 
+```{r}
+library(tidytext)
+library(dplyr)
+library(tidyverse)
+library(stringr)
+library(tibble)
+library(knitr)
+library(here)
+library(ggplot2)
+library(naniar)
+```
+
+First, we will install and load the dataset.
+#Note: I did have to installl a package called 'devtools' and also use devtools::install_github("averyrobbins1/appa") in order to use the package "appa"
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2020-08-11')
+tuesdata <- tidytuesdayR::tt_load(2020, week = 33)
+
+avatar <- tuesdata$avatar
+
+library(tidyverse)
+library(appa)
+
+avatar <- appa::appa
+
+scene_description <- avatar %>% 
+  select(id, scene_description) %>% 
+  unnest_longer(scene_description) %>% 
+  filter(!is.na(scene_description))
+
+```
+Using 'dplyr' to explore the Avatar dataset
+```{r}
+dplyr::glimpse(avatar)
+
+head(avatar) #This allows me to display the first n rows present in the input data frame.
+book_titles <- avatar %>% distinct(book) #There are four books in this series and I would like to know if all books are included in this dataset
+
+print(book_titles)
+``` 
+The tibble above demonstrates that only three of the books are included in this dataset.
+
+
+My favorite character in this series is Uncle Iroh (listed as Iroh under characters). I was admittedly obsessed with this character as child ;). 
+
+I would like to see how many times Uncle Iroh is mentioned in this dataset. 
+```{r}
+characters_found <- grep("Iroh", avatar$character, fixed = TRUE)
+print(characters_found)
+```
+I am able to discern that the numbers in [] relate to the book number. the data correlates the time Iroh is mentioned to the specific book number.  
+
+```{r}
+
+iroh_water<- avatar%>%
+  filter(book == "Water" & character == "Iroh")
+  
+```
+
+I will now attempt to organize this output into a table.
+```{r}
+Iroh_freq_df <- as.data.frame(iroh_water)
+print(Iroh_freq_df)
+```
+I will now attempt to search for phrases Uncle Iroh says in Water.
+```{r}
+Iroh_phrases <- grep("Prince Zuko|More tea", iroh_water$character_words, fixed = TRUE)
+print(Iroh_phrases)
+```
+According to the output it is used 0 times. However, both phrases are mentioned. I'm not sure how to correctly format this code as it worked but the response is incorrect. 
