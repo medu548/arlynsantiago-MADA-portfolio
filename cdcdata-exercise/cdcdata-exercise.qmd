@@ -22,6 +22,10 @@ Here, I loaded all the packages I will use for this data exercise, listed below.
 library(tidyverse) #This includes ggplot2, tidyr, readr, dplyr, stringr, purr, forcats
 library(knitr)
 library(here)
+library(dplyr)
+library(tidyr)
+library(skimr)
+library(ggplot2)
 library(kableExtra) #This is used to build common complex tables and manipulate table styles. 
 
 #Reading in the csv file
@@ -38,10 +42,58 @@ str(cdcdata)
 colnames(cdcdata)
 ```
 
-I am seeing many Unknown Values within my dataset so I will try and filter those out...
+I am seeing many Unknown Values within my dataset in the Race/Ethnicity column so I will try and filter those out with the assistance of AI written code. 
 
 ```{r}
+#Examining data again 
+head(cdcdata)
 
+#Filtering Unknown in Column Race and Ethnicity
+clean_cdc_data <- cdcdata %>%
+  filter(!`Race and Ethnicity` %in% c("Unknown","Overall"))
+
+# Print the filtered data
+print(clean_cdc_data)
+
+# Explore clean_cdc_data
+head(clean_cdc_data)
+
+```
+
+I will now try to perform some exploratory/descriptive analysis on this cleaned dataset.
+
+```{r}
+# Seeing if I can identify overall population of of pregnant persons aged 18-49 years
+cdcdata1 <- clean_cdc_data %>%
+ group_by(`Race and Ethnicity`) %>%
+  reframe(total_denom = sum(Denominator))
+print(cdcdata1)
+
+```
+
+
+```{r}
+# Seeing if I can compare the vaccination coverage percentage among races
+clean_cdc_data <- clean_cdc_data %>%
+  mutate(Numerator = Percent/ 100 * Denominator) # Used this to create a new variable with just the numerator to calculate overall proportion
+
+cdcdata2 <- clean_cdc_data %>%
+group_by(`Race and Ethnicity`) %>%
+  reframe(total_denom = sum(Denominator),total_numerator = sum(Numerator), overall_percent= total_numerator/total_denom * 100)
+
+print(cdcdata2)
+```
+
+
+```{r}
+# Creating a plot of cdcdata2
+
+p1 <- ggplot(cdcdata2, aes(x = `Race and Ethnicity`, y = overall_percent)) + geom_bar(stat = "identity", position = "dodge") +
+labs(title = "Distribution of RSV Vaccine Coverage Using Race and Ethnicity", x = "Race and Ethnicity", y = "Percent Vaccinated") +  
+guides(x =  guide_axis(angle = 90)) +
+theme_minimal()    
+
+p1
 
 
 ```
