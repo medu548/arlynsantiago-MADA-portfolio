@@ -1,4 +1,3 @@
-
 ---
 title: "cdcdata-exercise"
 author: "Arlyn Santiago"
@@ -15,7 +14,7 @@ The dataset can be found on [CDC website](https://data.cdc.gov/Pregnancy-Vaccina
 
 ### Reading in the data
 
-Here, I loaded all the packages I will use for this data exercise, listed below. I also read in the data from the csv file, and I called the data `cdcdata`. We can see that there are 7 variables and 162 observations. This dataset has multiple indicators stacked on top of each other. For example, within the data there are columns for "Week_Ending_Date", "Race and Ethnicity," etc., 
+Here, I loaded all the packages I will use for this data exercise, listed below. I also read in the data from the csv file, and I called the data `cdcdata`. We can see that there are 7 variables and 162 observations. This dataset has multiple indicators stacked on top of each other. For example, within the data there are columns for "Week_Ending_Date", "Race and Ethnicity," etc.,
 
 ```{r}
 #Loading packages
@@ -42,7 +41,7 @@ str(cdcdata)
 colnames(cdcdata)
 ```
 
-I am seeing many Unknown Values within my dataset in the Race/Ethnicity column so I will try and filter those out with the assistance of AI written code. 
+I am seeing many Unknown Values within my dataset in the Race/Ethnicity column so I will try and filter those out with the assistance of AI written code.
 
 ```{r}
 #Examining data again 
@@ -71,7 +70,6 @@ print(cdcdata1)
 
 ```
 
-
 ```{r}
 # Seeing if I can compare the vaccination coverage percentage among races
 clean_cdc_data <- clean_cdc_data %>%
@@ -84,7 +82,6 @@ group_by(`Race and Ethnicity`) %>%
 print(cdcdata2)
 ```
 
-
 ```{r}
 # Creating a plot of cdcdata2
 
@@ -95,7 +92,106 @@ theme_minimal()
 
 p1
 
+save_data_location <- here::here("cdcdata-exercise","cdcdata2.rds")
+saveRDS(cdcdata2, file = save_data_location)
+
 
 ```
 
+## This section contributed by Clarke Miller
 
+```{r}
+
+# Call a whole bunch -O- libraries! 
+library(here) 
+library(dplyr) 
+library(ggplot2) 
+library(skimr) 
+library(gtsummary) 
+library(knitr) 
+library(tidyr) 
+library(broom) 
+library(readxl)
+library(synthpop)
+library(kableExtra)
+library(shiny)
+
+#Okay, I caved and used ChatGPT to help figure this part out.  Especially the sythpop stuff. Blah.
+
+# Load your existing data set (replace 'your_dataset.csv' with your actual file path)
+existing_data <- read.csv(here("cdcdata-exercise", "Weekly_Respiratory_Syncytial_Virus__RSV__Vaccination_Coverage_among_Pregnant_Persons_by_Race_and_Ethnicity_20240207.csv"))
+
+head(existing_data)
+
+print(existing_data)
+
+
+#Filtering Unknown in Column Race and Ethnicity
+clean_existing_data <- existing_data %>%
+  filter(!Race.and.Ethnicity %in% c("Unknown","Overall"))
+
+# Print the filtered data
+print(clean_existing_data)
+
+# Explore clean_cdc_data
+head(clean_existing_data)
+
+# Mutate!
+clean_existing_data <- clean_existing_data %>%
+  mutate(Numerator = Percent/ 100 * Denominator) 
+
+cdcdata3 <- clean_existing_data %>%
+group_by(Race.and.Ethnicity) %>%
+  reframe(total_denom = sum(Denominator),total_numerator = sum(Numerator), overall_percent= total_numerator/total_denom * 100)
+
+head(cdcdata3)
+
+print(cdcdata3)
+
+CDC_plot2 <- ggplot(cdcdata3, aes(x = Race.and.Ethnicity, y = overall_percent)) + geom_bar(stat = "identity", position = "dodge", color = "red") +
+labs(title = "Distribution of RSV Vaccine Coverage Using Race and Ethnicity (Original Data)", x = "Race and Ethnicity", y = "Percent Vacinated") +  
+guides(x =  guide_axis(angle = 90)) +
+theme_minimal()    
+
+CDC_plot2
+
+save_data_location <- here::here("cdcdata-exercise","cdcdata3.rds")
+saveRDS(cdcdata3, file = save_data_location)
+
+```
+
+```{r}
+# Call a whole bunch -O- libraries! 
+library(here) 
+library(dplyr) 
+library(ggplot2) 
+library(skimr) 
+library(gtsummary) 
+library(knitr) 
+library(tidyr) 
+library(broom) 
+library(readxl)
+library(synthpop)
+library(kableExtra)
+library(shiny)
+
+
+# Use synthpop to generate synthetic data
+synthetic_data <- syn(cdcdata3, method = "cart")
+
+# View the synthetic data
+head(synthetic_data)
+
+print(synthetic_data)
+
+save_data_location <- here::here("cdcdata-exercise","synthetic_data.rds")
+saveRDS(synthetic_data, file = save_data_location)
+
+CDC_plot5 <- ggplot(synthetic_data, aes(x = Race.and.Ethnicity, y = overall_percent)) + geom_bar(stat = "identity", position = "dodge", color="orange") +
+labs(title = "Distribution of RSV Vaccine Coverage Using Race and Ethnicity (Synthetic Data)", x = "Race and Ethnicity", y = "Percent Vaccinated") +  
+guides(x =  guide_axis(angle = 90)) +
+theme_minimal()  
+
+CDC_plot5
+
+```
