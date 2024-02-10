@@ -184,8 +184,15 @@ head(synthetic_data)
 
 print(synthetic_data)
 
-save_data_location <- here::here("cdcdata-exercise","synthetic_data.rds")
+save_data_location <- here::here("cdcdata-exercise","synthetic_data.csv")
 saveRDS(synthetic_data, file = save_data_location)
+
+compare.synds(synthetic_data,cdcdata3)
+
+
+```
+
+```{r}
 
 CDC_plot5 <- ggplot(synthetic_data, aes(x = Race.and.Ethnicity, y = overall_percent)) + geom_bar(stat = "identity", position = "dodge", color="orange") +
 labs(title = "Distribution of RSV Vaccine Coverage Using Race and Ethnicity (Synthetic Data)", x = "Race and Ethnicity", y = "Percent Vaccinated") +  
