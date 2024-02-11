@@ -236,7 +236,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at /Users/valeriasantiago/Documents/arlynsantiago-MADA-portfolio</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co">#This is used to build common complex tables and manipulate table styles. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co">#This is used to build common complex tables and manipulate table styles. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'kableExtra'
@@ -297,7 +301,120 @@ dbl (5): Percent, Denominator, Date Order, Race Sort Order, Figure_ID
 [7] "Figure_ID"         </code></pre>
 </div>
 </div>
-<p>I am seeing many Unknown Values within my dataset so I will try and filter those out…</p>
+<p>I am seeing many Unknown Values within my dataset in the Race/Ethnicity column so I will try and filter those out with the assistance of AI written code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Examining data again </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cdcdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  Week_Ending_Date       `Race and Ethnicity`   Percent Denominator `Date Order`
+  &lt;chr&gt;                  &lt;chr&gt;                    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+1 09/30/2023 12:00:00 AM American Indian / Ala…       0          57            1
+2 09/30/2023 12:00:00 AM Asian, NH                    0        2897            1
+3 09/30/2023 12:00:00 AM Black, NH                    0        1315            1
+4 09/30/2023 12:00:00 AM Hispanic/Latino              0        7072            1
+5 09/30/2023 12:00:00 AM Multiple/Other, NH           0         734            1
+6 09/30/2023 12:00:00 AM Native Hawaiian / Pac…       0         121            1
+# ℹ 2 more variables: `Race Sort Order` &lt;dbl&gt;, Figure_ID &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtering Unknown in Column Race and Ethnicity</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>clean_cdc_data <span class="ot">&lt;-</span> cdcdata <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">Race and Ethnicity</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Unknown"</span>,<span class="st">"Overall"</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the filtered data</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(clean_cdc_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 126 × 7
+   Week_Ending_Date       `Race and Ethnicity`  Percent Denominator `Date Order`
+   &lt;chr&gt;                  &lt;chr&gt;                   &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+ 1 09/30/2023 12:00:00 AM American Indian / Al…       0          57            1
+ 2 09/30/2023 12:00:00 AM Asian, NH                   0        2897            1
+ 3 09/30/2023 12:00:00 AM Black, NH                   0        1315            1
+ 4 09/30/2023 12:00:00 AM Hispanic/Latino             0        7072            1
+ 5 09/30/2023 12:00:00 AM Multiple/Other, NH          0         734            1
+ 6 09/30/2023 12:00:00 AM Native Hawaiian / Pa…       0         121            1
+ 7 09/30/2023 12:00:00 AM White, NH                   0        6073            1
+ 8 10/07/2023 12:00:00 AM American Indian / Al…       0          68            2
+ 9 10/07/2023 12:00:00 AM Asian, NH                   0        3339            2
+10 10/07/2023 12:00:00 AM Black, NH                   0        1547            2
+# ℹ 116 more rows
+# ℹ 2 more variables: `Race Sort Order` &lt;dbl&gt;, Figure_ID &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore clean_cdc_data</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_cdc_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  Week_Ending_Date       `Race and Ethnicity`   Percent Denominator `Date Order`
+  &lt;chr&gt;                  &lt;chr&gt;                    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+1 09/30/2023 12:00:00 AM American Indian / Ala…       0          57            1
+2 09/30/2023 12:00:00 AM Asian, NH                    0        2897            1
+3 09/30/2023 12:00:00 AM Black, NH                    0        1315            1
+4 09/30/2023 12:00:00 AM Hispanic/Latino              0        7072            1
+5 09/30/2023 12:00:00 AM Multiple/Other, NH           0         734            1
+6 09/30/2023 12:00:00 AM Native Hawaiian / Pac…       0         121            1
+# ℹ 2 more variables: `Race Sort Order` &lt;dbl&gt;, Figure_ID &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>I will now try to perform some exploratory/descriptive analysis on this cleaned dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seeing if I can identify overall population of of pregnant persons aged 18-49 years</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cdcdata1 <span class="ot">&lt;-</span> clean_cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Race and Ethnicity</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">total_denom =</span> <span class="fu">sum</span>(Denominator))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cdcdata1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  `Race and Ethnicity`                   total_denom
+  &lt;chr&gt;                                        &lt;dbl&gt;
+1 American Indian / Alaska Native, NH           2598
+2 Asian, NH                                   117686
+3 Black, NH                                    60360
+4 Hispanic/Latino                             285998
+5 Multiple/Other, NH                           32793
+6 Native Hawaiian / Pacific Islander, NH        4965
+7 White, NH                                   243504</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seeing if I can compare the vaccination coverage percentage among races</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>clean_cdc_data <span class="ot">&lt;-</span> clean_cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Numerator =</span> Percent<span class="sc">/</span> <span class="dv">100</span> <span class="sc">*</span> Denominator) <span class="co"># Used this to create a new variable with just the numerator to calculate overall proportion</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>cdcdata2 <span class="ot">&lt;-</span> clean_cdc_data <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(<span class="st">`</span><span class="at">Race and Ethnicity</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">total_denom =</span> <span class="fu">sum</span>(Denominator),<span class="at">total_numerator =</span> <span class="fu">sum</span>(Numerator), <span class="at">overall_percent=</span> total_numerator<span class="sc">/</span>total_denom <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cdcdata2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 4
+  `Race and Ethnicity`               total_denom total_numerator overall_percent
+  &lt;chr&gt;                                    &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
+1 American Indian / Alaska Native, …        2598            264.           10.2 
+2 Asian, NH                               117686          14836.           12.6 
+3 Black, NH                                60360           3135.            5.19
+4 Hispanic/Latino                         285998          21014.            7.35
+5 Multiple/Other, NH                       32793           2808.            8.56
+6 Native Hawaiian / Pacific Islande…        4965            472.            9.51
+7 White, NH                               243504          25439.           10.4 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a plot of cdcdata2</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cdcdata2, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Race and Ethnicity</span><span class="st">`</span>, <span class="at">y =</span> overall_percent)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of RSV Vaccine Coverage Using Race and Ethnicity"</span>, <span class="at">x =</span> <span class="st">"Race and Ethnicity"</span>, <span class="at">y =</span> <span class="st">"Percent Vaccinated"</span>) <span class="sc">+</span>  </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">x =</span>  <span class="fu">guide_axis</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()    </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cdcdata-exercise_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
