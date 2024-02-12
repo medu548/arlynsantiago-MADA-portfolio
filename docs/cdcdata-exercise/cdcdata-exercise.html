@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.542">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -148,13 +148,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../tidytuesday-exercise/tidytuesday-exercise.html">
  <span class="dropdown-text">Tidy Tuesday Exercise</span></a>
   </li>  
-        <li class="dropdown-header">data-exercise</li>
+        <li class="dropdown-header">Data-exercise</li>
         <li>
     <a class="dropdown-item" href="../data-exercise/data-exercise.html">
  <span class="dropdown-text">Week 4 Exercise</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../cdcdata-exercise.qmd">
+    <a class="dropdown-item" href="../cdcdata_exercise/cdcdata-exercise.qmd">
  <span class="dropdown-text">CDC Data Exercise</span></a>
   </li>  
     </ul>
@@ -221,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#This includes ggplot2, tidyr, readr, dplyr, stringr, purr, forcats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/valeriasantiago/Documents/arlynsantiago-MADA-portfolio</code></pre>
+<pre><code>here() starts at C:/Users/mclar/Desktop/EPID 8060e/Repository/arlynsantiago-MADA-portfolio</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -414,6 +414,875 @@ dbl (5): Percent, Denominator, Date Order, Race Sort Order, Figure_ID
 </figure>
 </div>
 </div>
+<<<<<<< HEAD
+=======
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"cdcdata-exercise"</span>,<span class="st">"cdcdata2.rds"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cdcdata2, <span class="at">file =</span> save_data_location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="this-section-contributed-by-clarke-miller" class="level2">
+<h2 class="anchored" data-anchor-id="this-section-contributed-by-clarke-miller">This section contributed by Clarke Miller</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call a whole bunch -O- libraries! </span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr) </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary) </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom) </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(synthpop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Find out more at https://www.synthpop.org.uk/</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Okay, I caved and used ChatGPT to help figure this part out.  Especially the sythpop stuff. Blah.</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your existing data set (replace 'your_dataset.csv' with your actual file path)</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>existing_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"cdcdata-exercise"</span>, <span class="st">"Weekly_Respiratory_Syncytial_Virus__RSV__Vaccination_Coverage_among_Pregnant_Persons_by_Race_and_Ethnicity_20240207.csv"</span>))</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(existing_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Week_Ending_Date                     Race.and.Ethnicity Percent
+1 09/30/2023 12:00:00 AM    American Indian / Alaska Native, NH       0
+2 09/30/2023 12:00:00 AM                              Asian, NH       0
+3 09/30/2023 12:00:00 AM                              Black, NH       0
+4 09/30/2023 12:00:00 AM                        Hispanic/Latino       0
+5 09/30/2023 12:00:00 AM                     Multiple/Other, NH       0
+6 09/30/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH       0
+  Denominator Date.Order Race.Sort.Order Figure_ID
+1          57          1               1         1
+2        2897          1               2         1
+3        1315          1               3         1
+4        7072          1               4         1
+5         734          1               5         1
+6         121          1               6         1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(existing_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Week_Ending_Date                     Race.and.Ethnicity Percent
+1   09/30/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.0
+2   09/30/2023 12:00:00 AM                              Asian, NH     0.0
+3   09/30/2023 12:00:00 AM                              Black, NH     0.0
+4   09/30/2023 12:00:00 AM                        Hispanic/Latino     0.0
+5   09/30/2023 12:00:00 AM                     Multiple/Other, NH     0.0
+6   09/30/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+7   09/30/2023 12:00:00 AM                                Overall     0.0
+8   09/30/2023 12:00:00 AM                                Unknown     0.0
+9   09/30/2023 12:00:00 AM                              White, NH     0.0
+10  10/07/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.0
+11  10/07/2023 12:00:00 AM                              Asian, NH     0.0
+12  10/07/2023 12:00:00 AM                              Black, NH     0.0
+13  10/07/2023 12:00:00 AM                        Hispanic/Latino     0.0
+14  10/07/2023 12:00:00 AM                     Multiple/Other, NH     0.1
+15  10/07/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+16  10/07/2023 12:00:00 AM                                Overall     0.0
+17  10/07/2023 12:00:00 AM                                Unknown     0.0
+18  10/07/2023 12:00:00 AM                              White, NH     0.1
+19  10/14/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.0
+20  10/14/2023 12:00:00 AM                              Asian, NH     0.1
+21  10/14/2023 12:00:00 AM                              Black, NH     0.0
+22  10/14/2023 12:00:00 AM                        Hispanic/Latino     0.0
+23  10/14/2023 12:00:00 AM                     Multiple/Other, NH     0.2
+24  10/14/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+25  10/14/2023 12:00:00 AM                                Overall     0.1
+26  10/14/2023 12:00:00 AM                                Unknown     0.0
+27  10/14/2023 12:00:00 AM                              White, NH     0.3
+28  10/21/2023 12:00:00 AM    American Indian / Alaska Native, NH     1.1
+29  10/21/2023 12:00:00 AM                              Asian, NH     0.2
+30  10/21/2023 12:00:00 AM                              Black, NH     0.1
+31  10/21/2023 12:00:00 AM                        Hispanic/Latino     0.0
+32  10/21/2023 12:00:00 AM                     Multiple/Other, NH     0.4
+33  10/21/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+34  10/21/2023 12:00:00 AM                                Overall     0.2
+35  10/21/2023 12:00:00 AM                                Unknown     0.1
+36  10/21/2023 12:00:00 AM                              White, NH     0.6
+37  10/28/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.9
+38  10/28/2023 12:00:00 AM                              Asian, NH     0.3
+39  10/28/2023 12:00:00 AM                              Black, NH     0.2
+40  10/28/2023 12:00:00 AM                        Hispanic/Latino     0.1
+41  10/28/2023 12:00:00 AM                     Multiple/Other, NH     0.6
+42  10/28/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+43  10/28/2023 12:00:00 AM                                Overall     0.5
+44  10/28/2023 12:00:00 AM                                Unknown     0.3
+45  10/28/2023 12:00:00 AM                              White, NH     1.1
+46  11/04/2023 12:00:00 AM    American Indian / Alaska Native, NH     1.7
+47  11/04/2023 12:00:00 AM                              Asian, NH     0.7
+48  11/04/2023 12:00:00 AM                              Black, NH     0.3
+49  11/04/2023 12:00:00 AM                        Hispanic/Latino     0.3
+50  11/04/2023 12:00:00 AM                     Multiple/Other, NH     1.1
+51  11/04/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.5
+52  11/04/2023 12:00:00 AM                                Overall     0.9
+53  11/04/2023 12:00:00 AM                                Unknown     0.9
+54  11/04/2023 12:00:00 AM                              White, NH     2.0
+55  11/11/2023 12:00:00 AM    American Indian / Alaska Native, NH     2.5
+56  11/11/2023 12:00:00 AM                              Asian, NH     2.2
+57  11/11/2023 12:00:00 AM                              Black, NH     0.6
+58  11/11/2023 12:00:00 AM                        Hispanic/Latino     0.6
+59  11/11/2023 12:00:00 AM                     Multiple/Other, NH     1.9
+60  11/11/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     1.7
+61  11/11/2023 12:00:00 AM                                Overall     1.7
+62  11/11/2023 12:00:00 AM                                Unknown     1.4
+63  11/11/2023 12:00:00 AM                              White, NH     3.0
+64  11/18/2023 12:00:00 AM    American Indian / Alaska Native, NH     6.1
+65  11/18/2023 12:00:00 AM                              Asian, NH     5.1
+66  11/18/2023 12:00:00 AM                              Black, NH     1.3
+67  11/18/2023 12:00:00 AM                        Hispanic/Latino     1.6
+68  11/18/2023 12:00:00 AM                     Multiple/Other, NH     3.3
+69  11/18/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     3.4
+70  11/18/2023 12:00:00 AM                                Overall     3.2
+71  11/18/2023 12:00:00 AM                                Unknown     2.5
+72  11/18/2023 12:00:00 AM                              White, NH     4.8
+73  11/25/2023 12:00:00 AM    American Indian / Alaska Native, NH     6.4
+74  11/25/2023 12:00:00 AM                              Asian, NH     7.2
+75  11/25/2023 12:00:00 AM                              Black, NH     2.2
+76  11/25/2023 12:00:00 AM                        Hispanic/Latino     2.8
+77  11/25/2023 12:00:00 AM                     Multiple/Other, NH     4.7
+78  11/25/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     4.7
+79  11/25/2023 12:00:00 AM                                Overall     4.6
+80  11/25/2023 12:00:00 AM                                Unknown     3.2
+81  11/25/2023 12:00:00 AM                              White, NH     6.4
+82  12/02/2023 12:00:00 AM    American Indian / Alaska Native, NH     9.3
+83  12/02/2023 12:00:00 AM                              Asian, NH    10.5
+84  12/02/2023 12:00:00 AM                              Black, NH     3.9
+85  12/02/2023 12:00:00 AM                        Hispanic/Latino     5.2
+86  12/02/2023 12:00:00 AM                     Multiple/Other, NH     6.4
+87  12/02/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     9.1
+88  12/02/2023 12:00:00 AM                                Overall     7.1
+89  12/02/2023 12:00:00 AM                                Unknown     4.6
+90  12/02/2023 12:00:00 AM                              White, NH     8.9
+91  12/09/2023 12:00:00 AM    American Indian / Alaska Native, NH    10.2
+92  12/09/2023 12:00:00 AM                              Asian, NH    13.1
+93  12/09/2023 12:00:00 AM                              Black, NH     5.3
+94  12/09/2023 12:00:00 AM                        Hispanic/Latino     7.1
+95  12/09/2023 12:00:00 AM                     Multiple/Other, NH     8.2
+96  12/09/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    10.3
+97  12/09/2023 12:00:00 AM                                Overall     9.0
+98  12/09/2023 12:00:00 AM                                Unknown     5.8
+99  12/09/2023 12:00:00 AM                              White, NH    10.8
+100 12/16/2023 12:00:00 AM    American Indian / Alaska Native, NH    11.0
+101 12/16/2023 12:00:00 AM                              Asian, NH    15.6
+102 12/16/2023 12:00:00 AM                              Black, NH     6.4
+103 12/16/2023 12:00:00 AM                        Hispanic/Latino     9.0
+104 12/16/2023 12:00:00 AM                     Multiple/Other, NH     9.5
+105 12/16/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    12.0
+106 12/16/2023 12:00:00 AM                                Overall    10.8
+107 12/16/2023 12:00:00 AM                                Unknown     7.4
+108 12/16/2023 12:00:00 AM                              White, NH    12.5
+109 12/23/2023 12:00:00 AM    American Indian / Alaska Native, NH    12.6
+110 12/23/2023 12:00:00 AM                              Asian, NH    17.3
+111 12/23/2023 12:00:00 AM                              Black, NH     7.2
+112 12/23/2023 12:00:00 AM                        Hispanic/Latino    10.4
+113 12/23/2023 12:00:00 AM                     Multiple/Other, NH    11.2
+114 12/23/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    13.4
+115 12/23/2023 12:00:00 AM                                Overall    12.2
+116 12/23/2023 12:00:00 AM                                Unknown     8.3
+117 12/23/2023 12:00:00 AM                              White, NH    14.0
+118 12/30/2023 12:00:00 AM    American Indian / Alaska Native, NH    14.2
+119 12/30/2023 12:00:00 AM                              Asian, NH    18.5
+120 12/30/2023 12:00:00 AM                              Black, NH     7.5
+121 12/30/2023 12:00:00 AM                        Hispanic/Latino    11.2
+122 12/30/2023 12:00:00 AM                     Multiple/Other, NH    12.0
+123 12/30/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    13.4
+124 12/30/2023 12:00:00 AM                                Overall    13.0
+125 12/30/2023 12:00:00 AM                                Unknown     9.2
+126 12/30/2023 12:00:00 AM                              White, NH    14.7
+127 01/06/2024 12:00:00 AM    American Indian / Alaska Native, NH    16.2
+128 01/06/2024 12:00:00 AM                              Asian, NH    19.8
+129 01/06/2024 12:00:00 AM                              Black, NH     8.2
+130 01/06/2024 12:00:00 AM                        Hispanic/Latino    12.0
+131 01/06/2024 12:00:00 AM                     Multiple/Other, NH    12.9
+132 01/06/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    13.4
+133 01/06/2024 12:00:00 AM                                Overall    14.0
+134 01/06/2024 12:00:00 AM                                Unknown    10.4
+135 01/06/2024 12:00:00 AM                              White, NH    15.8
+136 01/13/2024 12:00:00 AM    American Indian / Alaska Native, NH    17.2
+137 01/13/2024 12:00:00 AM                              Asian, NH    21.4
+138 01/13/2024 12:00:00 AM                              Black, NH     8.7
+139 01/13/2024 12:00:00 AM                        Hispanic/Latino    13.3
+140 01/13/2024 12:00:00 AM                     Multiple/Other, NH    14.6
+141 01/13/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    16.6
+142 01/13/2024 12:00:00 AM                                Overall    15.3
+143 01/13/2024 12:00:00 AM                                Unknown    11.6
+144 01/13/2024 12:00:00 AM                              White, NH    17.1
+145 01/20/2024 12:00:00 AM    American Indian / Alaska Native, NH    17.0
+146 01/20/2024 12:00:00 AM                              Asian, NH    22.3
+147 01/20/2024 12:00:00 AM                              Black, NH     9.2
+148 01/20/2024 12:00:00 AM                        Hispanic/Latino    13.9
+149 01/20/2024 12:00:00 AM                     Multiple/Other, NH    15.4
+150 01/20/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    16.8
+151 01/20/2024 12:00:00 AM                                Overall    15.9
+152 01/20/2024 12:00:00 AM                                Unknown    12.1
+153 01/20/2024 12:00:00 AM                              White, NH    17.8
+154 01/27/2024 12:00:00 AM    American Indian / Alaska Native, NH    17.1
+155 01/27/2024 12:00:00 AM                              Asian, NH    22.8
+156 01/27/2024 12:00:00 AM                              Black, NH     9.5
+157 01/27/2024 12:00:00 AM                        Hispanic/Latino    13.9
+158 01/27/2024 12:00:00 AM                     Multiple/Other, NH    15.7
+159 01/27/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    17.5
+160 01/27/2024 12:00:00 AM                                Overall    16.2
+161 01/27/2024 12:00:00 AM                                Unknown    12.4
+162 01/27/2024 12:00:00 AM                              White, NH    18.2
+    Denominator Date.Order Race.Sort.Order Figure_ID
+1            57          1               1         1
+2          2897          1               2         1
+3          1315          1               3         1
+4          7072          1               4         1
+5           734          1               5         1
+6           121          1               6         1
+7         19168          1               7         1
+8           899          1               8         1
+9          6073          1               9         1
+10           68          2               1         1
+11         3339          2               2         1
+12         1547          2               3         1
+13         8149          2               4         1
+14          867          2               5         1
+15          139          2               6         1
+16        22142          2               7         1
+17         1072          2               8         1
+18         6961          2               9         1
+19           82          3               1         1
+20         3806          3               2         1
+21         1795          3               3         1
+22         9200          3               4         1
+23          995          3               5         1
+24          154          3               6         1
+25        25071          3               7         1
+26         1217          3               8         1
+27         7822          3               9         1
+28           92          4               1         1
+29         4274          4               2         1
+30         2060          4               3         1
+31        10307          4               4         1
+32         1128          4               5         1
+33          174          4               6         1
+34        28105          4               7         1
+35         1365          4               8         1
+36         8705          4               9         1
+37          106          5               1         1
+38         4715          5               2         1
+39         2297          5               3         1
+40        11403          5               4         1
+41         1256          5               5         1
+42          193          5               6         1
+43        31080          5               7         1
+44         1528          5               8         1
+45         9582          5               9         1
+46          115          6               1         1
+47         5115          6               2         1
+48         2550          6               3         1
+49        12446          6               4         1
+50         1395          6               5         1
+51          216          6               6         1
+52        34004          6               7         1
+53         1700          6               8         1
+54        10467          6               9         1
+55          119          7               1         1
+56         5557          7               2         1
+57         2788          7               3         1
+58        13525          7               4         1
+59         1517          7               5         1
+60          238          7               6         1
+61        36948          7               7         1
+62         1867          7               8         1
+63        11337          7               9         1
+64          132          8               1         1
+65         6009          8               2         1
+66         3047          8               3         1
+67        14619          8               4         1
+68         1642          8               5         1
+69          262          8               6         1
+70        40018          8               7         1
+71         2059          8               8         1
+72        12248          8               9         1
+73          140          9               1         1
+74         6447          9               2         1
+75         3288          9               3         1
+76        15637          9               4         1
+77         1782          9               5         1
+78          278          9               6         1
+79        42962          9               7         1
+80         2235          9               8         1
+81        13155          9               9         1
+82          150         10               1         1
+83         6845         10               2         1
+84         3502         10               3         1
+85        16559         10               4         1
+86         1909         10               5         1
+87          287         10               6         1
+88        45609         10               7         1
+89         2390         10               8         1
+90        13967         10               9         1
+91          157         11               1         1
+92         7251         11               2         1
+93         3743         11               3         1
+94        17541         11               4         1
+95         2031         11               5         1
+96          301         11               6         1
+97        48426         11               7         1
+98         2571         11               8         1
+99        14831         11               9         1
+100         173         12               1         1
+101        7642         12               2         1
+102        3966         12               3         1
+103       18478         12               4         1
+104        2138         12               5         1
+105         317         12               6         1
+106       51174         12               7         1
+107        2781         12               8         1
+108       15679         12               9         1
+109         182         13               1         1
+110        8051         13               2         1
+111        4191         13               3         1
+112       19473         13               4         1
+113        2263         13               5         1
+114         335         13               6         1
+115       54036         13               7         1
+116        2983         13               8         1
+117       16558         13               9         1
+118         190         14               1         1
+119        8421         14               2         1
+120        4443         14               3         1
+121       20474         14               4         1
+122        2396         14               5         1
+123         359         14               6         1
+124       56949         14               7         1
+125        3164         14               8         1
+126       17502         14               9         1
+127         198         15               1         1
+128        8775         15               2         1
+129        4672         15               3         1
+130       21402         15               4         1
+131        2527         15               5         1
+132         372         15               6         1
+133       59648         15               7         1
+134        3337         15               8         1
+135       18365         15               9         1
+136         203         16               1         1
+137        9140         16               2         1
+138        4879         16               3         1
+139       22262         16               4         1
+140        2629         16               5         1
+141         391         16               6         1
+142       62215         16               7         1
+143        3520         16               8         1
+144       19191         16               9         1
+145         212         17               1         1
+146        9513         17               2         1
+147        5048         17               3         1
+148       23261         17               4         1
+149        2742         17               5         1
+150         405         17               6         1
+151       64966         17               7         1
+152        3707         17               8         1
+153       20078         17               9         1
+154         222         18               1         1
+155        9889         18               2         1
+156        5229         18               3         1
+157       24190         18               4         1
+158        2842         18               5         1
+159         423         18               6         1
+160       67666         18               7         1
+161        3888         18               8         1
+162       20983         18               9         1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtering Unknown in Column Race and Ethnicity</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>clean_existing_data <span class="ot">&lt;-</span> existing_data <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Race.and.Ethnicity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Unknown"</span>,<span class="st">"Overall"</span>))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the filtered data</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(clean_existing_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Week_Ending_Date                     Race.and.Ethnicity Percent
+1   09/30/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.0
+2   09/30/2023 12:00:00 AM                              Asian, NH     0.0
+3   09/30/2023 12:00:00 AM                              Black, NH     0.0
+4   09/30/2023 12:00:00 AM                        Hispanic/Latino     0.0
+5   09/30/2023 12:00:00 AM                     Multiple/Other, NH     0.0
+6   09/30/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+7   09/30/2023 12:00:00 AM                              White, NH     0.0
+8   10/07/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.0
+9   10/07/2023 12:00:00 AM                              Asian, NH     0.0
+10  10/07/2023 12:00:00 AM                              Black, NH     0.0
+11  10/07/2023 12:00:00 AM                        Hispanic/Latino     0.0
+12  10/07/2023 12:00:00 AM                     Multiple/Other, NH     0.1
+13  10/07/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+14  10/07/2023 12:00:00 AM                              White, NH     0.1
+15  10/14/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.0
+16  10/14/2023 12:00:00 AM                              Asian, NH     0.1
+17  10/14/2023 12:00:00 AM                              Black, NH     0.0
+18  10/14/2023 12:00:00 AM                        Hispanic/Latino     0.0
+19  10/14/2023 12:00:00 AM                     Multiple/Other, NH     0.2
+20  10/14/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+21  10/14/2023 12:00:00 AM                              White, NH     0.3
+22  10/21/2023 12:00:00 AM    American Indian / Alaska Native, NH     1.1
+23  10/21/2023 12:00:00 AM                              Asian, NH     0.2
+24  10/21/2023 12:00:00 AM                              Black, NH     0.1
+25  10/21/2023 12:00:00 AM                        Hispanic/Latino     0.0
+26  10/21/2023 12:00:00 AM                     Multiple/Other, NH     0.4
+27  10/21/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+28  10/21/2023 12:00:00 AM                              White, NH     0.6
+29  10/28/2023 12:00:00 AM    American Indian / Alaska Native, NH     0.9
+30  10/28/2023 12:00:00 AM                              Asian, NH     0.3
+31  10/28/2023 12:00:00 AM                              Black, NH     0.2
+32  10/28/2023 12:00:00 AM                        Hispanic/Latino     0.1
+33  10/28/2023 12:00:00 AM                     Multiple/Other, NH     0.6
+34  10/28/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.0
+35  10/28/2023 12:00:00 AM                              White, NH     1.1
+36  11/04/2023 12:00:00 AM    American Indian / Alaska Native, NH     1.7
+37  11/04/2023 12:00:00 AM                              Asian, NH     0.7
+38  11/04/2023 12:00:00 AM                              Black, NH     0.3
+39  11/04/2023 12:00:00 AM                        Hispanic/Latino     0.3
+40  11/04/2023 12:00:00 AM                     Multiple/Other, NH     1.1
+41  11/04/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     0.5
+42  11/04/2023 12:00:00 AM                              White, NH     2.0
+43  11/11/2023 12:00:00 AM    American Indian / Alaska Native, NH     2.5
+44  11/11/2023 12:00:00 AM                              Asian, NH     2.2
+45  11/11/2023 12:00:00 AM                              Black, NH     0.6
+46  11/11/2023 12:00:00 AM                        Hispanic/Latino     0.6
+47  11/11/2023 12:00:00 AM                     Multiple/Other, NH     1.9
+48  11/11/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     1.7
+49  11/11/2023 12:00:00 AM                              White, NH     3.0
+50  11/18/2023 12:00:00 AM    American Indian / Alaska Native, NH     6.1
+51  11/18/2023 12:00:00 AM                              Asian, NH     5.1
+52  11/18/2023 12:00:00 AM                              Black, NH     1.3
+53  11/18/2023 12:00:00 AM                        Hispanic/Latino     1.6
+54  11/18/2023 12:00:00 AM                     Multiple/Other, NH     3.3
+55  11/18/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     3.4
+56  11/18/2023 12:00:00 AM                              White, NH     4.8
+57  11/25/2023 12:00:00 AM    American Indian / Alaska Native, NH     6.4
+58  11/25/2023 12:00:00 AM                              Asian, NH     7.2
+59  11/25/2023 12:00:00 AM                              Black, NH     2.2
+60  11/25/2023 12:00:00 AM                        Hispanic/Latino     2.8
+61  11/25/2023 12:00:00 AM                     Multiple/Other, NH     4.7
+62  11/25/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     4.7
+63  11/25/2023 12:00:00 AM                              White, NH     6.4
+64  12/02/2023 12:00:00 AM    American Indian / Alaska Native, NH     9.3
+65  12/02/2023 12:00:00 AM                              Asian, NH    10.5
+66  12/02/2023 12:00:00 AM                              Black, NH     3.9
+67  12/02/2023 12:00:00 AM                        Hispanic/Latino     5.2
+68  12/02/2023 12:00:00 AM                     Multiple/Other, NH     6.4
+69  12/02/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH     9.1
+70  12/02/2023 12:00:00 AM                              White, NH     8.9
+71  12/09/2023 12:00:00 AM    American Indian / Alaska Native, NH    10.2
+72  12/09/2023 12:00:00 AM                              Asian, NH    13.1
+73  12/09/2023 12:00:00 AM                              Black, NH     5.3
+74  12/09/2023 12:00:00 AM                        Hispanic/Latino     7.1
+75  12/09/2023 12:00:00 AM                     Multiple/Other, NH     8.2
+76  12/09/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    10.3
+77  12/09/2023 12:00:00 AM                              White, NH    10.8
+78  12/16/2023 12:00:00 AM    American Indian / Alaska Native, NH    11.0
+79  12/16/2023 12:00:00 AM                              Asian, NH    15.6
+80  12/16/2023 12:00:00 AM                              Black, NH     6.4
+81  12/16/2023 12:00:00 AM                        Hispanic/Latino     9.0
+82  12/16/2023 12:00:00 AM                     Multiple/Other, NH     9.5
+83  12/16/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    12.0
+84  12/16/2023 12:00:00 AM                              White, NH    12.5
+85  12/23/2023 12:00:00 AM    American Indian / Alaska Native, NH    12.6
+86  12/23/2023 12:00:00 AM                              Asian, NH    17.3
+87  12/23/2023 12:00:00 AM                              Black, NH     7.2
+88  12/23/2023 12:00:00 AM                        Hispanic/Latino    10.4
+89  12/23/2023 12:00:00 AM                     Multiple/Other, NH    11.2
+90  12/23/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    13.4
+91  12/23/2023 12:00:00 AM                              White, NH    14.0
+92  12/30/2023 12:00:00 AM    American Indian / Alaska Native, NH    14.2
+93  12/30/2023 12:00:00 AM                              Asian, NH    18.5
+94  12/30/2023 12:00:00 AM                              Black, NH     7.5
+95  12/30/2023 12:00:00 AM                        Hispanic/Latino    11.2
+96  12/30/2023 12:00:00 AM                     Multiple/Other, NH    12.0
+97  12/30/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH    13.4
+98  12/30/2023 12:00:00 AM                              White, NH    14.7
+99  01/06/2024 12:00:00 AM    American Indian / Alaska Native, NH    16.2
+100 01/06/2024 12:00:00 AM                              Asian, NH    19.8
+101 01/06/2024 12:00:00 AM                              Black, NH     8.2
+102 01/06/2024 12:00:00 AM                        Hispanic/Latino    12.0
+103 01/06/2024 12:00:00 AM                     Multiple/Other, NH    12.9
+104 01/06/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    13.4
+105 01/06/2024 12:00:00 AM                              White, NH    15.8
+106 01/13/2024 12:00:00 AM    American Indian / Alaska Native, NH    17.2
+107 01/13/2024 12:00:00 AM                              Asian, NH    21.4
+108 01/13/2024 12:00:00 AM                              Black, NH     8.7
+109 01/13/2024 12:00:00 AM                        Hispanic/Latino    13.3
+110 01/13/2024 12:00:00 AM                     Multiple/Other, NH    14.6
+111 01/13/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    16.6
+112 01/13/2024 12:00:00 AM                              White, NH    17.1
+113 01/20/2024 12:00:00 AM    American Indian / Alaska Native, NH    17.0
+114 01/20/2024 12:00:00 AM                              Asian, NH    22.3
+115 01/20/2024 12:00:00 AM                              Black, NH     9.2
+116 01/20/2024 12:00:00 AM                        Hispanic/Latino    13.9
+117 01/20/2024 12:00:00 AM                     Multiple/Other, NH    15.4
+118 01/20/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    16.8
+119 01/20/2024 12:00:00 AM                              White, NH    17.8
+120 01/27/2024 12:00:00 AM    American Indian / Alaska Native, NH    17.1
+121 01/27/2024 12:00:00 AM                              Asian, NH    22.8
+122 01/27/2024 12:00:00 AM                              Black, NH     9.5
+123 01/27/2024 12:00:00 AM                        Hispanic/Latino    13.9
+124 01/27/2024 12:00:00 AM                     Multiple/Other, NH    15.7
+125 01/27/2024 12:00:00 AM Native Hawaiian / Pacific Islander, NH    17.5
+126 01/27/2024 12:00:00 AM                              White, NH    18.2
+    Denominator Date.Order Race.Sort.Order Figure_ID
+1            57          1               1         1
+2          2897          1               2         1
+3          1315          1               3         1
+4          7072          1               4         1
+5           734          1               5         1
+6           121          1               6         1
+7          6073          1               9         1
+8            68          2               1         1
+9          3339          2               2         1
+10         1547          2               3         1
+11         8149          2               4         1
+12          867          2               5         1
+13          139          2               6         1
+14         6961          2               9         1
+15           82          3               1         1
+16         3806          3               2         1
+17         1795          3               3         1
+18         9200          3               4         1
+19          995          3               5         1
+20          154          3               6         1
+21         7822          3               9         1
+22           92          4               1         1
+23         4274          4               2         1
+24         2060          4               3         1
+25        10307          4               4         1
+26         1128          4               5         1
+27          174          4               6         1
+28         8705          4               9         1
+29          106          5               1         1
+30         4715          5               2         1
+31         2297          5               3         1
+32        11403          5               4         1
+33         1256          5               5         1
+34          193          5               6         1
+35         9582          5               9         1
+36          115          6               1         1
+37         5115          6               2         1
+38         2550          6               3         1
+39        12446          6               4         1
+40         1395          6               5         1
+41          216          6               6         1
+42        10467          6               9         1
+43          119          7               1         1
+44         5557          7               2         1
+45         2788          7               3         1
+46        13525          7               4         1
+47         1517          7               5         1
+48          238          7               6         1
+49        11337          7               9         1
+50          132          8               1         1
+51         6009          8               2         1
+52         3047          8               3         1
+53        14619          8               4         1
+54         1642          8               5         1
+55          262          8               6         1
+56        12248          8               9         1
+57          140          9               1         1
+58         6447          9               2         1
+59         3288          9               3         1
+60        15637          9               4         1
+61         1782          9               5         1
+62          278          9               6         1
+63        13155          9               9         1
+64          150         10               1         1
+65         6845         10               2         1
+66         3502         10               3         1
+67        16559         10               4         1
+68         1909         10               5         1
+69          287         10               6         1
+70        13967         10               9         1
+71          157         11               1         1
+72         7251         11               2         1
+73         3743         11               3         1
+74        17541         11               4         1
+75         2031         11               5         1
+76          301         11               6         1
+77        14831         11               9         1
+78          173         12               1         1
+79         7642         12               2         1
+80         3966         12               3         1
+81        18478         12               4         1
+82         2138         12               5         1
+83          317         12               6         1
+84        15679         12               9         1
+85          182         13               1         1
+86         8051         13               2         1
+87         4191         13               3         1
+88        19473         13               4         1
+89         2263         13               5         1
+90          335         13               6         1
+91        16558         13               9         1
+92          190         14               1         1
+93         8421         14               2         1
+94         4443         14               3         1
+95        20474         14               4         1
+96         2396         14               5         1
+97          359         14               6         1
+98        17502         14               9         1
+99          198         15               1         1
+100        8775         15               2         1
+101        4672         15               3         1
+102       21402         15               4         1
+103        2527         15               5         1
+104         372         15               6         1
+105       18365         15               9         1
+106         203         16               1         1
+107        9140         16               2         1
+108        4879         16               3         1
+109       22262         16               4         1
+110        2629         16               5         1
+111         391         16               6         1
+112       19191         16               9         1
+113         212         17               1         1
+114        9513         17               2         1
+115        5048         17               3         1
+116       23261         17               4         1
+117        2742         17               5         1
+118         405         17               6         1
+119       20078         17               9         1
+120         222         18               1         1
+121        9889         18               2         1
+122        5229         18               3         1
+123       24190         18               4         1
+124        2842         18               5         1
+125         423         18               6         1
+126       20983         18               9         1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore clean_cdc_data</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clean_existing_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Week_Ending_Date                     Race.and.Ethnicity Percent
+1 09/30/2023 12:00:00 AM    American Indian / Alaska Native, NH       0
+2 09/30/2023 12:00:00 AM                              Asian, NH       0
+3 09/30/2023 12:00:00 AM                              Black, NH       0
+4 09/30/2023 12:00:00 AM                        Hispanic/Latino       0
+5 09/30/2023 12:00:00 AM                     Multiple/Other, NH       0
+6 09/30/2023 12:00:00 AM Native Hawaiian / Pacific Islander, NH       0
+  Denominator Date.Order Race.Sort.Order Figure_ID
+1          57          1               1         1
+2        2897          1               2         1
+3        1315          1               3         1
+4        7072          1               4         1
+5         734          1               5         1
+6         121          1               6         1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutate!</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>clean_existing_data <span class="ot">&lt;-</span> clean_existing_data <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Numerator =</span> Percent<span class="sc">/</span> <span class="dv">100</span> <span class="sc">*</span> Denominator) </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>cdcdata3 <span class="ot">&lt;-</span> clean_existing_data <span class="sc">%&gt;%</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(Race.and.Ethnicity) <span class="sc">%&gt;%</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="at">total_denom =</span> <span class="fu">sum</span>(Denominator),<span class="at">total_numerator =</span> <span class="fu">sum</span>(Numerator), <span class="at">overall_percent=</span> total_numerator<span class="sc">/</span>total_denom <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cdcdata3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Race.and.Ethnicity                 total_denom total_numerator overall_percent
+  &lt;chr&gt;                                    &lt;int&gt;           &lt;dbl&gt;           &lt;dbl&gt;
+1 American Indian / Alaska Native, …        2598            264.           10.2 
+2 Asian, NH                               117686          14836.           12.6 
+3 Black, NH                                60360           3135.            5.19
+4 Hispanic/Latino                         285998          21014.            7.35
+5 Multiple/Other, NH                       32793           2808.            8.56
+6 Native Hawaiian / Pacific Islande…        4965            472.            9.51</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cdcdata3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 4
+  Race.and.Ethnicity                 total_denom total_numerator overall_percent
+  &lt;chr&gt;                                    &lt;int&gt;           &lt;dbl&gt;           &lt;dbl&gt;
+1 American Indian / Alaska Native, …        2598            264.           10.2 
+2 Asian, NH                               117686          14836.           12.6 
+3 Black, NH                                60360           3135.            5.19
+4 Hispanic/Latino                         285998          21014.            7.35
+5 Multiple/Other, NH                       32793           2808.            8.56
+6 Native Hawaiian / Pacific Islande…        4965            472.            9.51
+7 White, NH                               243504          25439.           10.4 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>CDC_plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cdcdata3, <span class="fu">aes</span>(<span class="at">x =</span> Race.and.Ethnicity, <span class="at">y =</span> overall_percent)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of RSV Vaccine Coverage Using Race and Ethnicity (Original Data)"</span>, <span class="at">x =</span> <span class="st">"Race and Ethnicity"</span>, <span class="at">y =</span> <span class="st">"Percent Vacinated"</span>) <span class="sc">+</span>  </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">guides</span>(<span class="at">x =</span>  <span class="fu">guide_axis</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()    </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>CDC_plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cdcdata-exercise_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"cdcdata-exercise"</span>,<span class="st">"cdcdata3.rds"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cdcdata3, <span class="at">file =</span> save_data_location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call a whole bunch -O- libraries! </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) </span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr) </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary) </span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) </span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) </span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom) </span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(synthpop)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use synthpop to generate synthetic data</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>synthetic_data <span class="ot">&lt;-</span> <span class="fu">syn</span>(cdcdata3, <span class="at">method =</span> <span class="st">"cart"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CAUTION: Your data set has fewer observations (7) than we advise.
+We suggest that there should be at least 140 observations
+(100 + 10 * no. of variables used in modelling the data).
+Please check your synthetic data carefully with functions
+compare(), utility.tab(), and utility.gen().
+
+
+Variable(s): Race.and.Ethnicity have been changed for synthesis from character to factor.
+
+Synthesis
+-----------
+ Race.and.Ethnicity total_denom total_numerator overall_percent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the synthetic data</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(synthetic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$call
+syn(data = cdcdata3, method = "cart")
+
+$m
+[1] 1
+
+$syn
+                      Race.and.Ethnicity total_denom total_numerator
+1                        Hispanic/Latino        4965       25439.054
+2                     Multiple/Other, NH      117686         472.075
+3 Native Hawaiian / Pacific Islander, NH       32793       21014.185
+4                     Multiple/Other, NH      117686        2808.096
+5    American Indian / Alaska Native, NH       32793       14836.168
+6                              Asian, NH        2598        3135.485
+7                     Multiple/Other, NH      285998         263.808
+  overall_percent
+1       12.606570
+2       10.154273
+3        8.563096
+4        5.194640
+5        8.563096
+6       12.606570
+7       12.606570
+
+$method
+Race.and.Ethnicity        total_denom    total_numerator    overall_percent 
+          "sample"             "cart"             "cart"             "cart" 
+
+$visit.sequence
+Race.and.Ethnicity        total_denom    total_numerator    overall_percent 
+                 1                  2                  3                  4 
+
+$predictor.matrix
+                   Race.and.Ethnicity total_denom total_numerator
+Race.and.Ethnicity                  0           0               0
+total_denom                         1           0               0
+total_numerator                     1           1               0
+overall_percent                     1           1               1
+                   overall_percent
+Race.and.Ethnicity               0
+total_denom                      0
+total_numerator                  0
+overall_percent                  0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(synthetic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+($call) syn(data = cdcdata3, method = "cart")
+
+Number of synthesised data sets: 
+($m)  1 
+
+First rows of synthesised data set: 
+($syn)
+                      Race.and.Ethnicity total_denom total_numerator
+1                        Hispanic/Latino        4965       25439.054
+2                     Multiple/Other, NH      117686         472.075
+3 Native Hawaiian / Pacific Islander, NH       32793       21014.185
+4                     Multiple/Other, NH      117686        2808.096
+5    American Indian / Alaska Native, NH       32793       14836.168
+6                              Asian, NH        2598        3135.485
+  overall_percent
+1       12.606570
+2       10.154273
+3        8.563096
+4        5.194640
+5        8.563096
+6       12.606570
+...
+
+Synthesising methods: 
+($method)
+Race.and.Ethnicity        total_denom    total_numerator    overall_percent 
+          "sample"             "cart"             "cart"             "cart" 
+
+Order of synthesis: 
+($visit.sequence)
+Race.and.Ethnicity        total_denom    total_numerator    overall_percent 
+                 1                  2                  3                  4 
+
+Matrix of predictors: 
+($predictor.matrix)
+                   Race.and.Ethnicity total_denom total_numerator
+Race.and.Ethnicity                  0           0               0
+total_denom                         1           0               0
+total_numerator                     1           1               0
+overall_percent                     1           1               1
+                   overall_percent
+Race.and.Ethnicity               0
+total_denom                      0
+total_numerator                  0
+overall_percent                  0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>save_data_location <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"cdcdata-exercise"</span>,<span class="st">"synthetic_data.csv"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(synthetic_data, <span class="at">file =</span> save_data_location)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">compare.synds</span>(synthetic_data,cdcdata3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Warning: You are creating tables with 7 cells from 7 observations.
+Results from sparse tables may be unreliable.
+Warning: You are creating tables with 5 cells from 7 observations.
+Results from sparse tables may be unreliable.
+Warning: You are creating tables with 5 cells from 7 observations.
+Results from sparse tables may be unreliable.
+Warning: You are creating tables with 4 cells from 7 observations.
+Results from sparse tables may be unreliable.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Comparing percentages observed with synthetic</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cdcdata-exercise_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Selected utility measures:
+                       pMSE   S_pMSE df
+Race.and.Ethnicity 0.053571 1.000000  6
+total_denom        0.011905 0.333333  4
+total_numerator    0.000000 0.000000  4
+overall_percent    0.032313 1.206349  3</code></pre>
+</div>
+>>>>>>> 952885f39bd039260a689b9975bd981834e11cf9
 </div>
 
 
@@ -582,7 +1451,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

@@ -193,8 +193,8 @@ compare.synds(synthetic_data,cdcdata3)
 
 ```
 
-```{r}
 
+<<<<<<< HEAD
 CDC_plot5 <- ggplot(synthetic_data, aes(x = Race.and.Ethnicity, y = overall_percent)) + geom_bar(stat = "identity", position = "dodge", color="orange") +
 labs(title = "Distribution of RSV Vaccine Coverage Using Race and Ethnicity (Synthetic Data)", x = "Race and Ethnicity", y = "Percent Vaccinated") +  
 guides(x =  guide_axis(angle = 90)) +
@@ -301,3 +301,5 @@ p1
 
 ```
 >>>>>>> Stashed changes
+=======
+>>>>>>> 952885f39bd039260a689b9975bd981834e11cf9
