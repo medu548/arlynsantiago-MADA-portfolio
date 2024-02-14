@@ -193,34 +193,15 @@ compare.synds(synthetic_data,cdcdata3)
 
 ```
 
-
-<<<<<<< HEAD
+```{r}
 CDC_plot5 <- ggplot(synthetic_data, aes(x = Race.and.Ethnicity, y = overall_percent)) + geom_bar(stat = "identity", position = "dodge", color="orange") +
 labs(title = "Distribution of RSV Vaccine Coverage Using Race and Ethnicity (Synthetic Data)", x = "Race and Ethnicity", y = "Percent Vaccinated") +  
 guides(x =  guide_axis(angle = 90)) +
 theme_minimal()  
 
 CDC_plot5
-
 ```
-=======
----
-title: "cdcdata-exercise"
-author: "Arlyn Santiago"
-editor: visual
----
 
-# CDC Data Exploration: Quarterly Provisional Estimates for Selected Birth Indicators
-
-### Description of the data
-
-This dataset comes from the National Center for Immunization and Respiratory Diseases (NCIRD). The data is a quarterly release of provisional estimates of selected reproductive indicators including general fertility rates, age-specific birth rates, total and low-risk cesarean delivery rates, preterm birth rates, and other gestational age categories. Data on RSV vaccinations among pregnant persons was available starting September 22, 2023, and includes doses received starting September 24, 2023.
-
-The dataset can be found on [CDC website](https://data.cdc.gov/Pregnancy-Vaccination/Weekly-Respiratory-Syncytial-Virus-RSV-Vaccination/g4jn-64pd/about_data.).
-
-### Reading in the data
-
-Here, I loaded all the packages I will use for this data exercise, listed below. I also read in the data from the csv file, and I called the data `cdcdata`. We can see that there are 7 variables and 162 observations. This dataset has multiple indicators stacked on top of each other. For example, within the data there are columns for "Week_Ending_Date", "Race and Ethnicity," etc.,
 
 ```{r}
 #Loading packages
@@ -300,6 +281,4 @@ p1
 
 
 ```
->>>>>>> Stashed changes
-=======
->>>>>>> 952885f39bd039260a689b9975bd981834e11cf9
+
