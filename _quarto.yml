@@ -21,7 +21,7 @@ website:
           - text: "Data-exercise"
           - file: data-exercise/data-exercise.qmd
           - text: "CDC Data Exercise"
-            file: cdcdata_exercise/cdcdata-exercise.qmd
+            file: cdcdata-exercise/cdcdata-exercise.qmd
     right:
       - icon: github 
         href: https://github.com/medu548/arlynsantiago-MADA-portfolio       

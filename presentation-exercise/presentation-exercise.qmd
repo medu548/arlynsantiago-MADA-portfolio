@@ -2,4 +2,62 @@
 title: "Presentation Exercise"
 ---
 
+## Data visualization
 
+For this exercise I chose a graph from the "HHere’s What Your Part Of America Eats On Thanksgiving" article from FiveThirtyEight (<https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/>). The graph displays the side dishes commonly consumed per region in the United States on Thanksgiving. I used the RTutor AI online tool to make the graph more similar the original one.
+
+This is the original graph from the article:
+
+![Caption](side-dish.webp)\
+
+```{r}
+library(tidyverse)
+library(scales)
+library(here)
+library(readr)
+library(ggplot2)
+
+dishes_poll <- read_csv(here("presentation-exercise","thanksgiving-2015-poll-data.csv"))
+
+str(dishes_poll) #I used str() to see what the dataset looked like once I loaded it into RStudio
+
+```
+
+Most the variables are character variables. There are 1058 observations and 65 variables in this dataset.
+
+I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table
+
+```{r}
+dishes_poll_dif <- dishes_poll %>%
+  unite("side_dish", 12:26, sep =',',na.rm = TRUE)
+
+side_dishes_columns <- grep("Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply.", names(dishes_poll), value = TRUE)
+
+
+tab1 <- dishes_poll %>%
+  count('US Region', 'Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply. - Brussel sprouts`== "Brussel sprouts"')
+
+gtsummary::tbl_summary(dishes_poll,
+                       by = `US Region`)
+```
+
+I will now attempt to create the same graph from the article using ggplot()
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+popular_dishes_by_region <- dishes_poll %>%
+  filter(`Do you celebrate Thanksgiving?` == "Yes") %>%
+  count(`US Region`, `What is typically the main dish at your Thanksgiving dinner?`) %>%
+  arrange(`US Region`, desc(n))
+
+ggplot(popular_dishes_by_region, aes(x = reorder(`What is typically the main dish at your Thanksgiving dinner?`, n), y = n, fill = `US Region`)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Main Dish", y = "Count", fill = "Region") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  facet_wrap(~`US Region`, scales = "free_y")
+
+```
+
+This is honestly the best I could do, I'm not sure who the author was able to group all these graphs so neatly into one.
