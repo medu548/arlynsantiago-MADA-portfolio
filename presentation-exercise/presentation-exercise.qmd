@@ -4,7 +4,7 @@ title: "Presentation Exercise"
 
 ## Data visualization
 
-For this exercise I chose a graph from the "HHere’s What Your Part Of America Eats On Thanksgiving" article from FiveThirtyEight (<https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/>). The graph displays the side dishes commonly consumed per region in the United States on Thanksgiving. I used the RTutor AI online tool to make the graph more similar the original one.
+For this exercise I chose a graph from the "Here’s What Your Part Of America Eats On Thanksgiving" article from FiveThirtyEight (<https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/>). The graph displays the side dishes commonly consumed per region in the United States on Thanksgiving. I used the RTutor AI online tool to make the graph more similar the original one.
 
 This is the original graph from the article:
 
@@ -23,9 +23,9 @@ str(dishes_poll) #I used str() to see what the dataset looked like once I loaded
 
 ```
 
-Most the variables are character variables. There are 1058 observations and 65 variables in this dataset.
+Most of the variables are character variables. There are 1058 observations and 65 variables in this dataset.
 
-I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table
+I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table. I had to create a seperate column because after many attempts I realized each dish had its own column which isn't efficient for 1050 observations to pick from. 
 
 ```{r}
 dishes_poll_dif <- dishes_poll %>%
@@ -41,7 +41,7 @@ gtsummary::tbl_summary(dishes_poll,
                        by = `US Region`)
 ```
 
-I will now attempt to create the same graph from the article using ggplot()
+I will now attempt to create the same graph from the article using ggplot(). I will first have to filter by the question "Do you celebrate Thanksgiving" and then use count() to select for the US region and the dished served at Thanksgiving. 
 
 ```{r}
 library(dplyr)
@@ -60,4 +60,4 @@ ggplot(popular_dishes_by_region, aes(x = reorder(`What is typically the main dis
 
 ```
 
-This is honestly the best I could do, I'm not sure who the author was able to group all these graphs so neatly into one.
+This is honestly the best I could do, I'm not sure how the author was able to group all these graphs so neatly into one.
