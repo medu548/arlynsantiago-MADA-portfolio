@@ -1,1 +1,1 @@
-# Please find my website and data analysis portfolio here: https://github.com/medu548/arlynsantiago-MADA-portfolio.git
+# Please find my website and data analysis portfolio here: https://medu548.github.io/arlynsantiago-MADA-portfolio/
