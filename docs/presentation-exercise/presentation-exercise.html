@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.542">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -147,10 +147,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../tidytuesday-exercise/tidytuesday-exercise.html">
  <span class="dropdown-text">Tidy Tuesday Exercise</span></a>
   </li>  
-        <li class="dropdown-header">Data-exercise</li>
         <li>
     <a class="dropdown-item" href="../data-exercise/data-exercise.html">
- <span class="dropdown-text">Week 4 Exercise</span></a>
+ <span class="dropdown-text">Data Exercise</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../cdcdata-exercise/cdcdata-exercise.html">
@@ -201,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="data-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="data-visualization">Data visualization</h2>
-<p>For this exercise I chose a graph from the “HHere’s What Your Part Of America Eats On Thanksgiving” article from FiveThirtyEight (<a href="https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/" class="uri">https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/</a>). The graph displays the side dishes commonly consumed per region in the United States on Thanksgiving. I used the RTutor AI online tool to make the graph more similar the original one.</p>
+<p>For this exercise I chose a graph from the “Here’s What Your Part Of America Eats On Thanksgiving” article from FiveThirtyEight (<a href="https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/" class="uri">https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/</a>). The graph displays the side dishes commonly consumed per region in the United States on Thanksgiving. I used the RTutor AI online tool to make the graph more similar the original one.</p>
 <p>This is the original graph from the article:</p>
 <p><img src="side-dish.webp" class="img-fluid" alt="Caption"><br>
 </p>
@@ -209,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
@@ -234,7 +233,7 @@ The following object is masked from 'package:readr':
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>here() starts at /Users/valeriasantiago/Documents/arlynsantiago-MADA-portfolio</code></pre>
+<pre><code>here() starts at C:/Users/mclar/Desktop/EPID 8060e/Repository/arlynsantiago-MADA-portfolio</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -413,8 +412,8 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
  - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
 </div>
-<p>Most the variables are character variables. There are 1058 observations and 65 variables in this dataset.</p>
-<p>I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table</p>
+<p>Most of the variables are character variables. There are 1058 observations and 65 variables in this dataset.</p>
+<p>I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table. I had to create a seperate column because after many attempts I realized each dish had its own column which isn’t efficient for 1050 observations to pick from.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dishes_poll_dif <span class="ot">&lt;-</span> dishes_poll <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">"side_dish"</span>, <span class="dv">12</span><span class="sc">:</span><span class="dv">26</span>, <span class="at">sep =</span><span class="st">','</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
@@ -431,23 +430,23 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <pre><code>59 observations missing `US Region` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `US Region` column before passing to `tbl_summary()`.</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="zpsgppkouw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zpsgppkouw table {
+<div id="nowjulpdmo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nowjulpdmo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zpsgppkouw thead, #zpsgppkouw tbody, #zpsgppkouw tfoot, #zpsgppkouw tr, #zpsgppkouw td, #zpsgppkouw th {
+#nowjulpdmo thead, #nowjulpdmo tbody, #nowjulpdmo tfoot, #nowjulpdmo tr, #nowjulpdmo td, #nowjulpdmo th {
   border-style: none;
 }
 
-#zpsgppkouw p {
+#nowjulpdmo p {
   margin: 0;
   padding: 0;
 }
 
-#zpsgppkouw .gt_table {
+#nowjulpdmo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -473,12 +472,12 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-left-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_caption {
+#nowjulpdmo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zpsgppkouw .gt_title {
+#nowjulpdmo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -490,7 +489,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-width: 0;
 }
 
-#zpsgppkouw .gt_subtitle {
+#nowjulpdmo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -502,7 +501,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-top-width: 0;
 }
 
-#zpsgppkouw .gt_heading {
+#nowjulpdmo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -514,13 +513,13 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_bottom_border {
+#nowjulpdmo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_col_headings {
+#nowjulpdmo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -535,7 +534,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_col_heading {
+#nowjulpdmo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,7 +554,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   overflow-x: hidden;
 }
 
-#zpsgppkouw .gt_column_spanner_outer {
+#nowjulpdmo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -567,15 +566,15 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 4px;
 }
 
-#zpsgppkouw .gt_column_spanner_outer:first-child {
+#nowjulpdmo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zpsgppkouw .gt_column_spanner_outer:last-child {
+#nowjulpdmo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zpsgppkouw .gt_column_spanner {
+#nowjulpdmo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -587,11 +586,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   width: 100%;
 }
 
-#zpsgppkouw .gt_spanner_row {
+#nowjulpdmo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zpsgppkouw .gt_group_heading {
+#nowjulpdmo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -617,7 +616,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   text-align: left;
 }
 
-#zpsgppkouw .gt_empty_group_heading {
+#nowjulpdmo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -632,15 +631,15 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   vertical-align: middle;
 }
 
-#zpsgppkouw .gt_from_md > :first-child {
+#nowjulpdmo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zpsgppkouw .gt_from_md > :last-child {
+#nowjulpdmo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zpsgppkouw .gt_row {
+#nowjulpdmo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +658,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   overflow-x: hidden;
 }
 
-#zpsgppkouw .gt_stub {
+#nowjulpdmo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -672,7 +671,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
-#zpsgppkouw .gt_stub_row_group {
+#nowjulpdmo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -686,15 +685,15 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   vertical-align: top;
 }
 
-#zpsgppkouw .gt_row_group_first td {
+#nowjulpdmo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zpsgppkouw .gt_row_group_first th {
+#nowjulpdmo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zpsgppkouw .gt_summary_row {
+#nowjulpdmo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -704,16 +703,16 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
-#zpsgppkouw .gt_first_summary_row {
+#nowjulpdmo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_first_summary_row.thick {
+#nowjulpdmo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zpsgppkouw .gt_last_summary_row {
+#nowjulpdmo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -723,7 +722,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_grand_summary_row {
+#nowjulpdmo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -733,7 +732,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
-#zpsgppkouw .gt_first_grand_summary_row {
+#nowjulpdmo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -743,7 +742,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-top-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_last_grand_summary_row_top {
+#nowjulpdmo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -753,11 +752,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_striped {
+#nowjulpdmo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zpsgppkouw .gt_table_body {
+#nowjulpdmo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -766,7 +765,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_footnotes {
+#nowjulpdmo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -780,7 +779,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_footnote {
+#nowjulpdmo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -789,7 +788,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
-#zpsgppkouw .gt_sourcenotes {
+#nowjulpdmo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -803,7 +802,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
-#zpsgppkouw .gt_sourcenote {
+#nowjulpdmo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -811,63 +810,63 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
-#zpsgppkouw .gt_left {
+#nowjulpdmo .gt_left {
   text-align: left;
 }
 
-#zpsgppkouw .gt_center {
+#nowjulpdmo .gt_center {
   text-align: center;
 }
 
-#zpsgppkouw .gt_right {
+#nowjulpdmo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zpsgppkouw .gt_font_normal {
+#nowjulpdmo .gt_font_normal {
   font-weight: normal;
 }
 
-#zpsgppkouw .gt_font_bold {
+#nowjulpdmo .gt_font_bold {
   font-weight: bold;
 }
 
-#zpsgppkouw .gt_font_italic {
+#nowjulpdmo .gt_font_italic {
   font-style: italic;
 }
 
-#zpsgppkouw .gt_super {
+#nowjulpdmo .gt_super {
   font-size: 65%;
 }
 
-#zpsgppkouw .gt_footnote_marks {
+#nowjulpdmo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zpsgppkouw .gt_asterisk {
+#nowjulpdmo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zpsgppkouw .gt_indent_1 {
+#nowjulpdmo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zpsgppkouw .gt_indent_2 {
+#nowjulpdmo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zpsgppkouw .gt_indent_3 {
+#nowjulpdmo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zpsgppkouw .gt_indent_4 {
+#nowjulpdmo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zpsgppkouw .gt_indent_5 {
+#nowjulpdmo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2179,31 +2178,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">2 (40%)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;CORNBREAD AND BREAD MIX</td>
-<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_2">1 (33%)</td>
-<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;cornbread based-I'm Southern</td>
-<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">1 (20%)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread of course... ;)</td>
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread-based</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
@@ -2215,7 +2190,31 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread-based</td>
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;CORNBREAD AND BREAD MIX</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">1 (33%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;cornbread based-I'm Southern</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">1 (20%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread of course... ;)</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
@@ -2287,6 +2286,18 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten-Free Bread Based</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">1 (33%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;gluten free</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -2298,25 +2309,13 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten free bread based</td>
 <td class="gt_row gt_center" headers="stat_1">1 (33%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten-Free Bread Based</td>
-<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_5">1 (33%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
@@ -6865,6 +6864,18 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
 </tr>
 <tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie-spple &amp; pecan</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pie is dessert</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -6876,7 +6887,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie is the dessert</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -6888,7 +6899,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pie only</td>
 <td class="gt_row gt_center" headers="stat_1">1 (4.5%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -6897,18 +6908,6 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie-spple &amp; pecan</td>
-<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
@@ -7021,18 +7020,6 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pies: pumpkin with cie cream vanilla, apple, pecan</td>
-<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pies....Look at #8 answer!</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -7041,6 +7028,18 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pies: pumpkin with cie cream vanilla, apple, pecan</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
@@ -8279,7 +8278,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 </div>
 </div>
-<p>I will now attempt to create the same graph from the article using ggplot()</p>
+<p>I will now attempt to create the same graph from the article using ggplot(). I will first have to filter by the question “Do you celebrate Thanksgiving” and then use count() to select for the US region and the dished served at Thanksgiving.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -8302,7 +8301,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 </div>
 </div>
-<p>This is honestly the best I could do, I’m not sure who the author was able to group all these graphs so neatly into one.</p>
+<p>This is honestly the best I could do, I’m not sure how the author was able to group all these graphs so neatly into one.</p>
 
 
 </section>
@@ -8469,7 +8468,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

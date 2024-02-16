@@ -1,10 +1,10 @@
 ---
-title: "Week 4 Exercise"
+title: "Data-exercise"
 ---
 
-This exercise is designed to give you practice with exploring text datasets (a _complex data type_). We will load, process, and engage in some discriptive/exploratory analysis of the data.
+This exercise is designed to give you practice with exploring text data sets (a _complex data type_). We will load, process, and engage in some descriptive/exploratory analysis of the data.
 
-The data this week comes from the appa R package created by Avery Robbins. The original data came from the Avatar Wiki, and the example code used to scrape this dataset is also covered on Avery's blog along with a quick exploration of the available data in a separate blog post.
+The data this week comes from the appa R package created by Avery Robbins. The original data came from the Avatar Wiki, and the example code used to scrape this data set is also covered on Avery's blog along with a quick exploration of the available data in a separate blog post.
 
 
 I'm not sure if I will need these packages but I will load them all just to be sure 
