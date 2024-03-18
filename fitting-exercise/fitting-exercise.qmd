@@ -70,13 +70,13 @@ str(dc5) # to make sure the combined dataframe inludes the correct variables
 
 ```{r}
 # Summary table
-summary_model = skimr::skim(dc5)
+summary_model = skimr::skim(dc5) # skimr is used to provide basic data summary 
 print(summary_model)
 
 # A bar chart of total drug by age
 
 dc6 <- dc5 %>%
-  group_by(AGE) %>%
+  group_by(AGE) %>% 
   summarize(avg_drug_level = mean(Y))
 
 p1 <- ggplot(dc6, aes(x = AGE, y = avg_drug_level)) +
@@ -132,5 +132,51 @@ p5 <- ggplot(dc7, aes(x = RACE, y = mean_Y, fill = RACE)) +
 plot(p5)
 ```
 
+# Model Fitting
+Using Linear Models...
+```{r}
+# load required libraries
+library(tidymodels)
+```
+
+```{r}
+# I was so lost so used ChatGPT to fit a linear model to Y using variable of interest (DOSE)
+dc5_lm1 <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(Y ~ DOSE, data = dc5) # learned that you have to include data = for this one
+
+print(dc5_lm1)
+
+# RMSE and R-squared predictions
+dc5_lm1_pred <- predict(dc5_lm1, new_data = dc5) 
+
+dc5_lm1_pred
+```
+
+# Plot Y and DOSE
+```{r}
+# ggplot did not want to cooperate so I am going to try lm
+
+lmY <- lm(Y ~ DOSE, data = dc5)
+
+plot(lmY)
+```
+# Creating Metrics Using RMSE and R-squared predictions
+```{r}
+#R-bloggers shows you how to use rmse by hand..
+rmse <- sqrt(mean((dc5$Y - predict(lmY, data = dc5))^2))
+
+#rmse = 666.46
+rsquared <- cor(dc5$Y,predict(lmY, data = dc5))^2
+#rsquared = 0.5156
+```
+
+# Creating Logistic Regression Model for Sex and DOSE
+```{r}
+# using glm 
+log_model1 <- glm(SEX ~ DOSE, family = "binomial", data = dc5) #have to tell r that  dependent variable is binary. Best explained in https://stat.ethz.ch/R-manual/R-devel/library/stats/html/family.html however I'm still unsure what ~ means
+
+log_model1
+```
 
 
