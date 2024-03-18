@@ -2,7 +2,7 @@
 title: "fitting exercise"
 ---
 
-### Load required packages
+# Load required packages
 
 ```{r}
 library(dplyr)
@@ -15,13 +15,19 @@ library(tidymodels)
 library(stringr)
 ```
 
-### Load the dataset using file.choose()
+# Load the dataset using file.choose()
 
 ```{r}
 model_data <- read.csv("/Users/valeriasantiago/Documents/arlynsantiago-MADA-portfolio/fitting-exercise/Mavoglurant_A2121_nmpk.csv")
 ```
 
-### create plot of DV by time with ID as a group factor
+# Check dataset using nrow() and ncol()
+```{r}
+nrow(model_data)
+ncol(model_data)
+```
+
+# Create plot of DV by time with ID as a group factor
 
 ```{r}
 # Plotting using ggplot2
@@ -33,47 +39,46 @@ p1 <- ggplot(model_data, aes(x = TIME, y = DV, group = ID, color = factor(DOSE))
 plot(p1)
 ```
 
-### Data Cleaning
-
+# Data Cleaning
 ```{r}
-# Filter rows where OCC is equal to 1
-d1 <- model_data %>%
+# Filter rows so that OCC = 1 and remove rows where OCC = 2
+dc1 <- model_data %>%
   filter(OCC == 1)
 
 # Sum DV of each ID
-d2 <- d1 %>%
+dc2 <- dc1 %>%
   filter(TIME != 0) %>%  # ! to exclude observations with TIME = 0
   group_by(ID) %>%
   summarise(Y = sum(DV))
 
 # Now data only includes TIME == 0
-d3 <- d1 %>%
+dc3 <- dc1 %>%
   filter(TIME == 0)
 
 # Use left_join to combine d2 and d3 together
-d4 <- left_join(d2, d3, by = "ID")
+dc4 <- left_join(dc2, dc3, by = "ID")
 
-d5 <- d4 %>%
+dc5 <- dc4 %>%
   mutate(SEX = factor(SEX),
          RACE = factor(RACE)) %>%
   select(Y, DOSE, AGE, SEX, RACE, WT, HT)
 
 ```
 
-### Exploratory Process
+# Exploratory Process
 
 ```{r}
 # Summary table
-summary_df = skimr::skim(d5)
-print(summary_df)
+summary_model = skimr::skim(dc5)
+print(summary_model)
 
 # A bar chart of total drug by age
 
-d5_p1 <- d5 %>%
+dc6 <- dc5 %>%
   group_by(AGE) %>%
   summarize(avg_drug_level = mean(Y))
 
-p1 <- ggplot(d5_p1, aes(x = AGE, y = avg_drug_level)) +
+p1 <- ggplot(dc6, aes(x = AGE, y = avg_drug_level)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.7) +
   labs(title = "Bar chart of Total Drug Level vs Age",
        x = "Age",
@@ -82,7 +87,7 @@ plot(p1)
 
 # scatterplot of total drug by weight
 
-p2 <- ggplot(d5, aes(x = WT, y = Y)) +
+p2 <- ggplot(dc5, aes(x = WT, y = Y)) +
   geom_point() +
   labs(title = "Scatterplot of Total Drug Level vs Weight",
        x = "Weight",
@@ -90,7 +95,7 @@ p2 <- ggplot(d5, aes(x = WT, y = Y)) +
 plot(p2)
 
 # boxplot of total drug by dose level
-p3 <- ggplot(d5, aes(x = as.factor(DOSE), y = Y)) +
+p3 <- ggplot(dc5, aes(x = as.factor(DOSE), y = Y)) +
   geom_boxplot() +
   labs(title = "Boxplot of Total Drug Level vs Dose",
        x = "Dose Level",
@@ -99,7 +104,7 @@ plot(p3)
 
 # boxplot of total drug by sex
 
-p4 <- ggplot(d5, aes(x = as.factor(SEX), y = Y)) +
+p4 <- ggplot(dc5, aes(x = as.factor(SEX), y = Y)) +
   geom_boxplot() +
   labs(title = "Boxplot of Total Drug Level vs Sex",
        x = "Sex",
@@ -108,7 +113,7 @@ plot(p4)
 
 # bar chart of total drug by race
 
-d5_p5 <- d5 %>%
+dc7 <- dc5 %>%
   group_by(RACE) %>%
   summarize(
     mean_Y = mean(Y),
@@ -116,7 +121,7 @@ d5_p5 <- d5 %>%
   )  
 
 
-p5 <- ggplot(d5_p5, aes(x = RACE, y = mean_Y, fill = RACE)) +
+p5 <- ggplot(dc7, aes(x = RACE, y = mean_Y, fill = RACE)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.7) +
   geom_errorbar(aes(ymin = mean_Y - sd_Y, ymax = mean_Y + sd_Y),
                 position = position_dodge(width = 0.9), width = 0.2) +
