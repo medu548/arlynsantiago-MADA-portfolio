@@ -66,53 +66,53 @@ dc5 <- dc4 %>%
 str(dc5) # to make sure the combined dataframe inludes the correct variables
 ```
 
-# Exploratory Process
+# EDA
 
 ```{r}
 # Summary table
 summary_model = skimr::skim(dc5) # skimr is used to provide basic data summary 
 print(summary_model)
 
-# A bar chart of total drug by age
+# A bar chart of total drug amount vs age
 
 dc6 <- dc5 %>%
   group_by(AGE) %>% 
-  summarize(avg_drug_level = mean(Y))
+  summarize(drug_avg = mean(Y))
 
-p1 <- ggplot(dc6, aes(x = AGE, y = avg_drug_level)) +
+p1 <- ggplot(dc6, aes(x = AGE, y = drug_avg)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.7) +
-  labs(title = "Bar chart of Total Drug Level vs Age",
+  labs(title = "Bar chart of Total Drug Amount vs Age",
        x = "Age",
-       y = "Total Drug Level") 
+       y = "Total Drug Amount") 
 plot(p1)
 
-# scatterplot of total drug by weight
+# scatterplot of total drug amount vs weight
 
 p2 <- ggplot(dc5, aes(x = WT, y = Y)) +
   geom_point() +
-  labs(title = "Scatterplot of Total Drug Level vs Weight",
+  labs(title = "Scatterplot of Total Drug Amount vs Weight",
        x = "Weight",
        y = "Total Drug Level") 
 plot(p2)
 
 # boxplot of total drug by dose level
-p3 <- ggplot(dc5, aes(x = as.factor(DOSE), y = Y)) +
+p3 <- ggplot(dc5, aes(x = as.factor(DOSE), y = Y)) + # needed to make dose a factor first
   geom_boxplot() +
-  labs(title = "Boxplot of Total Drug Level vs Dose",
+  labs(title = "Boxplot of Total Drug Amount vs Dose",
        x = "Dose Level",
-       y = "Total Drug Level") 
+       y = "Total Drug Amount") 
 plot(p3)
 
 # boxplot of total drug by sex
 
-p4 <- ggplot(dc5, aes(x = as.factor(SEX), y = Y)) +
+p4 <- ggplot(dc5, aes(x = as.factor(SEX), y = Y)) + #same thing with sex 
   geom_boxplot() +
-  labs(title = "Boxplot of Total Drug Level vs Sex",
+  labs(title = "Boxplot of Total Drug Amount vs Sex",
        x = "Sex",
-       y = "Total Drug Level") 
+       y = "Total Drug Amount") 
 plot(p4)
 
-# bar chart of total drug by race
+# bar chart of total drug amount vs race
 
 dc7 <- dc5 %>%
   group_by(RACE) %>%
@@ -124,11 +124,10 @@ dc7 <- dc5 %>%
 
 p5 <- ggplot(dc7, aes(x = RACE, y = mean_Y, fill = RACE)) +
   geom_bar(stat = "identity", position = "dodge", alpha = 0.7) +
-  geom_errorbar(aes(ymin = mean_Y - sd_Y, ymax = mean_Y + sd_Y),
-                position = position_dodge(width = 0.9), width = 0.2) +
+  geom_errorbar(aes(ymin = mean_Y - sd_Y, ymax = mean_Y + sd_Y)) +
   labs(title = "Bar Chart with Error Bars of Total Drug Level vs Race",
        x = "Race",
-       y = "Mean Total Drug Level") 
+       y = "Mean Total Drug Amount") 
 plot(p5)
 ```
 
