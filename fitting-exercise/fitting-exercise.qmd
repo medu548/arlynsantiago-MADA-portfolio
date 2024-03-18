@@ -173,7 +173,7 @@ rsquared <- cor(dc5$Y,predict(lmY, data = dc5))^2
 # Creating Logistic Regression Model for Sex and DOSE
 ```{r}
 # using glm 
-log_model1 <- glm(SEX ~ DOSE, family = "binomial", data = dc5) #have to tell r that  dependent variable is binary. Best explained in https://stat.ethz.ch/R-manual/R-devel/library/stats/html/family.html however I'm still unsure what ~ means
+log_model1 <- glm(SEX ~ DOSE, family = "binomial", data = dc5) #have to tell r that dependent variable is binary. Best explained in https://stat.ethz.ch/R-manual/R-devel/library/stats/html/family.html however I'm still unsure what ~ means
 
 log_model1
 ```
