@@ -55,14 +55,15 @@ dc2 <- dc1 %>%
 dc3 <- dc1 %>%
   filter(TIME == 0)
 
-# Use left_join to combine d2 and d3 together
+# Use left_join to combine dc2 and dc3 together
 dc4 <- left_join(dc2, dc3, by = "ID")
 
 dc5 <- dc4 %>%
   mutate(SEX = factor(SEX),
          RACE = factor(RACE)) %>%
-  select(Y, DOSE, AGE, SEX, RACE, WT, HT)
+  select(Y, DOSE, AGE, SEX, RACE, WT, HT) # to only include these variables in the dc5 dataframe
 
+str(dc5) # to make sure the combined dataframe inludes the correct variables
 ```
 
 # Exploratory Process
