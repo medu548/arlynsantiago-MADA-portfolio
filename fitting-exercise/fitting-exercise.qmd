@@ -178,4 +178,49 @@ log_model1 <- glm(SEX ~ DOSE, family = "binomial", data = dc5) #have to tell r t
 log_model1
 ```
 
+# Creating Predictions
+```{r}
+# had to use ChatGPT to build this code becuase I was so lost 
+predictions <- predict(log_model1, newdata = dc5, type = "response")
+
+bin_pred <-if_else(predictions > 0.5,1,0)
+truth <- factor(dc5$SEX, levels = c(0,1))
+estimate <- factor(binary_predictions, levels = c(0,1))
+
+tibble_metrics <- tibble(truth = truth, estimate = estimate)
+
+test_accuracy <- yardstick::accuracy(data = tibble_metrics, truth = truth, estimate = estimate) # learned that yardstick is a cool tool that kind of does the work for you using tidymodels
+
+# Obtain pred probabilities from log_model1
+predicted_prob <- predict(log_model1, type = "response")
+
+# Now to create the ROC curve
+library(pROC)
+probs_roc_curve <- roc(dc5$SEX, predicted_prob)
+
+#Now to create the AUC
+probs_auc_curve <- auc(probs_roc_curve)
+
+# Creating another logistic regression model for SEX + the other predictors
+log_model2 <- glm(SEX ~ Y + DOSE +RACE + WT + HT, family = "binomial", data = dc5) #again using glm becuase ggplot failed me but I think I like glm more since I don't have to put anything in ""
+```
+
+# Creating Predictions for log_model2
+```{r}
+predicted_probs2 <- predict(log_model2, type = "response") #still not sure what response means...
+
+pred_bin2 <- if_else(predicted_probs2 > 0.5, 1,0)
+
+# So it was at this moment that I kept recieving errors and after using the internet and friendly help, I realized I forgot to convert SEX to not only a factor, but a binary (numeric) factor
+
+dc5$SEX <- as.factor(if_else(dc5$SEX == 1,0,1))
+pred_bin <- factor(pred_bin2) # now I have to assign SEX back to pred_bin2 but its the same set as above. I Asked for help on this 
+
+tibble_metrics2 <- tibble(truth = dc5$SEX, estimate = as.factor(pred_bin))
+
+probs_roc_curve2 <- roc(dc5$SEX, pred_bin2)
+probs_auc_curve2 <- auc(probs_roc_curve2)
+```
+
+
 
