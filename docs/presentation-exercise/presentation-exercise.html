@@ -2,7 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
+<<<<<<< Updated upstream
 <meta name="generator" content="quarto-1.4.537">
+=======
+<meta name="generator" content="quarto-1.4.542">
+>>>>>>> Stashed changes
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -211,6 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
+<<<<<<< Updated upstream
 <pre><code>Warning: package 'tidyverse' was built under R version 4.3.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -227,6 +232,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✔ dplyr     1.1.3     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+=======
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+>>>>>>> Stashed changes
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -234,10 +245,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<<<<<<< Updated upstream
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'scales' was built under R version 4.3.2</code></pre>
 </div>
+=======
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> Stashed changes
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'scales'
@@ -250,6 +265,7 @@ The following object is masked from 'package:readr':
 
     col_factor</code></pre>
 </div>
+<<<<<<< Updated upstream
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'here' was built under R version 4.3.2</code></pre>
@@ -261,6 +277,16 @@ The following object is masked from 'package:readr':
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>dishes_poll <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"presentation-exercise"</span>,<span class="st">"thanksgiving-2015-poll-data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /Users/valeriasantiago/Documents/arlynsantiago-MADA-portfolio</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>dishes_poll <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"presentation-exercise"</span>,<span class="st">"thanksgiving-2015-poll-data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> Stashed changes
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 Rows: 1058 Columns: 65
@@ -295,7 +321,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   do you typically have at Thanksgiving dinner? Please select all that apply.
   - Other (please specify)...51`</code></pre>
 </div>
+<<<<<<< Updated upstream
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dishes_poll) <span class="co">#I used str() to see what the dataset looked like once I loaded it into RStudio</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dishes_poll) <span class="co">#I used str() to see what the dataset looked like once I loaded it into RStudio</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> Stashed changes
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [1,058 × 65] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ RespondentID                                                                                                                                : num [1:1058] 4.34e+09 4.34e+09 4.34e+09 4.34e+09 4.34e+09 ...
@@ -437,6 +467,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <p>Most of the variables are character variables. There are 1058 observations and 65 variables in this dataset.</p>
 <p>I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table. I had to create a seperate column because after many attempts I realized each dish had its own column which isn’t efficient for 1050 observations to pick from.</p>
 <div class="cell">
+<<<<<<< Updated upstream
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dishes_poll_dif <span class="ot">&lt;-</span> dishes_poll <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">"side_dish"</span>, <span class="dv">12</span><span class="sc">:</span><span class="dv">26</span>, <span class="at">sep =</span><span class="st">','</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -448,27 +479,57 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>(dishes_poll,</span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">by =</span> <span class="st">`</span><span class="at">US Region</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dishes_poll_dif <span class="ot">&lt;-</span> dishes_poll <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">"side_dish"</span>, <span class="dv">12</span><span class="sc">:</span><span class="dv">26</span>, <span class="at">sep =</span><span class="st">','</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>side_dishes_columns <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply."</span>, <span class="fu">names</span>(dishes_poll), <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> dishes_poll <span class="sc">%&gt;%</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">'US Region'</span>, <span class="st">'Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply. - Brussel sprouts`== "Brussel sprouts"'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>(dishes_poll,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                       <span class="at">by =</span> <span class="st">`</span><span class="at">US Region</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> Stashed changes
 <div class="cell-output cell-output-stderr">
 <pre><code>59 observations missing `US Region` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `US Region` column before passing to `tbl_summary()`.</code></pre>
 </div>
 <div class="cell-output-display">
+<<<<<<< Updated upstream
 <div id="mojmtrdjhh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#mojmtrdjhh table {
+=======
+<div id="ccbgwwmthw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ccbgwwmthw table {
+>>>>>>> Stashed changes
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh thead, #mojmtrdjhh tbody, #mojmtrdjhh tfoot, #mojmtrdjhh tr, #mojmtrdjhh td, #mojmtrdjhh th {
   border-style: none;
 }
 
 #mojmtrdjhh p {
+=======
+#ccbgwwmthw thead, #ccbgwwmthw tbody, #ccbgwwmthw tfoot, #ccbgwwmthw tr, #ccbgwwmthw td, #ccbgwwmthw th {
+  border-style: none;
+}
+
+#ccbgwwmthw p {
+>>>>>>> Stashed changes
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_table {
+=======
+#ccbgwwmthw .gt_table {
+>>>>>>> Stashed changes
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -494,12 +555,20 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-left-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_caption {
+=======
+#ccbgwwmthw .gt_caption {
+>>>>>>> Stashed changes
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_title {
+=======
+#ccbgwwmthw .gt_title {
+>>>>>>> Stashed changes
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -511,7 +580,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-width: 0;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_subtitle {
+=======
+#ccbgwwmthw .gt_subtitle {
+>>>>>>> Stashed changes
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -523,7 +596,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-top-width: 0;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_heading {
+=======
+#ccbgwwmthw .gt_heading {
+>>>>>>> Stashed changes
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -535,13 +612,21 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_bottom_border {
+=======
+#ccbgwwmthw .gt_bottom_border {
+>>>>>>> Stashed changes
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_col_headings {
+=======
+#ccbgwwmthw .gt_col_headings {
+>>>>>>> Stashed changes
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -556,7 +641,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_col_heading {
+=======
+#ccbgwwmthw .gt_col_heading {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -576,7 +665,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   overflow-x: hidden;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_column_spanner_outer {
+=======
+#ccbgwwmthw .gt_column_spanner_outer {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -588,6 +681,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 4px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
@@ -597,6 +691,17 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 }
 
 #mojmtrdjhh .gt_column_spanner {
+=======
+#ccbgwwmthw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ccbgwwmthw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ccbgwwmthw .gt_column_spanner {
+>>>>>>> Stashed changes
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -608,11 +713,19 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   width: 100%;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
 #mojmtrdjhh .gt_group_heading {
+=======
+#ccbgwwmthw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ccbgwwmthw .gt_group_heading {
+>>>>>>> Stashed changes
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -638,7 +751,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   text-align: left;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_empty_group_heading {
+=======
+#ccbgwwmthw .gt_empty_group_heading {
+>>>>>>> Stashed changes
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -653,6 +770,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   vertical-align: middle;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_from_md > :first-child {
   margin-top: 0;
 }
@@ -662,6 +780,17 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 }
 
 #mojmtrdjhh .gt_row {
+=======
+#ccbgwwmthw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ccbgwwmthw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ccbgwwmthw .gt_row {
+>>>>>>> Stashed changes
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -680,7 +809,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   overflow-x: hidden;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_stub {
+=======
+#ccbgwwmthw .gt_stub {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -693,7 +826,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_stub_row_group {
+=======
+#ccbgwwmthw .gt_stub_row_group {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -707,6 +844,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   vertical-align: top;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_row_group_first td {
   border-top-width: 2px;
 }
@@ -716,6 +854,17 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 }
 
 #mojmtrdjhh .gt_summary_row {
+=======
+#ccbgwwmthw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ccbgwwmthw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ccbgwwmthw .gt_summary_row {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -725,16 +874,28 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_first_summary_row {
+=======
+#ccbgwwmthw .gt_first_summary_row {
+>>>>>>> Stashed changes
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
 #mojmtrdjhh .gt_last_summary_row {
+=======
+#ccbgwwmthw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ccbgwwmthw .gt_last_summary_row {
+>>>>>>> Stashed changes
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -744,7 +905,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_grand_summary_row {
+=======
+#ccbgwwmthw .gt_grand_summary_row {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -754,7 +919,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_first_grand_summary_row {
+=======
+#ccbgwwmthw .gt_first_grand_summary_row {
+>>>>>>> Stashed changes
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -764,7 +933,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-top-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_last_grand_summary_row_top {
+=======
+#ccbgwwmthw .gt_last_grand_summary_row_top {
+>>>>>>> Stashed changes
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -774,11 +947,19 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
 #mojmtrdjhh .gt_table_body {
+=======
+#ccbgwwmthw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ccbgwwmthw .gt_table_body {
+>>>>>>> Stashed changes
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -787,7 +968,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-bottom-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_footnotes {
+=======
+#ccbgwwmthw .gt_footnotes {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -801,7 +986,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_footnote {
+=======
+#ccbgwwmthw .gt_footnote {
+>>>>>>> Stashed changes
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -810,7 +999,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_sourcenotes {
+=======
+#ccbgwwmthw .gt_sourcenotes {
+>>>>>>> Stashed changes
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -824,7 +1017,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   border-right-color: #D3D3D3;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_sourcenote {
+=======
+#ccbgwwmthw .gt_sourcenote {
+>>>>>>> Stashed changes
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -832,6 +1029,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
   padding-right: 5px;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_left {
   text-align: left;
 }
@@ -841,10 +1039,22 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 }
 
 #mojmtrdjhh .gt_right {
+=======
+#ccbgwwmthw .gt_left {
+  text-align: left;
+}
+
+#ccbgwwmthw .gt_center {
+  text-align: center;
+}
+
+#ccbgwwmthw .gt_right {
+>>>>>>> Stashed changes
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_font_normal {
   font-weight: normal;
 }
@@ -862,16 +1072,40 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 }
 
 #mojmtrdjhh .gt_footnote_marks {
+=======
+#ccbgwwmthw .gt_font_normal {
+  font-weight: normal;
+}
+
+#ccbgwwmthw .gt_font_bold {
+  font-weight: bold;
+}
+
+#ccbgwwmthw .gt_font_italic {
+  font-style: italic;
+}
+
+#ccbgwwmthw .gt_super {
+  font-size: 65%;
+}
+
+#ccbgwwmthw .gt_footnote_marks {
+>>>>>>> Stashed changes
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_asterisk {
+=======
+#ccbgwwmthw .gt_asterisk {
+>>>>>>> Stashed changes
   font-size: 100%;
   vertical-align: 0;
 }
 
+<<<<<<< Updated upstream
 #mojmtrdjhh .gt_indent_1 {
   text-indent: 5px;
 }
@@ -889,6 +1123,25 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 }
 
 #mojmtrdjhh .gt_indent_5 {
+=======
+#ccbgwwmthw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ccbgwwmthw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ccbgwwmthw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ccbgwwmthw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ccbgwwmthw .gt_indent_5 {
+>>>>>>> Stashed changes
   text-indent: 25px;
 }
 </style>
@@ -2200,43 +2453,75 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">2 (40%)</td>
 </tr>
 <tr class="odd">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread-based</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;CORNBREAD AND BREAD MIX</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">1 (33%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_7">1 (9.1%)</td>
+=======
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="even">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;CORNBREAD AND BREAD MIX</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">1 (33%)</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;cornbread based-I'm Southern</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;cornbread based-I'm Southern</td>
+=======
+<td class="gt_row gt_center" headers="stat_9">1 (20%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread of course... ;)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">1 (20%)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread of course... ;)</td>
+=======
+<td class="gt_row gt_center" headers="stat_7">1 (9.1%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Cornbread-based</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
@@ -2308,36 +2593,64 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="even">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten-Free Bread Based</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;gluten free</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_5">1 (33%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+=======
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">1 (9.1%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="odd">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;gluten free</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten free bread based</td>
+<td class="gt_row gt_center" headers="stat_1">1 (33%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_7">1 (9.1%)</td>
+=======
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="even">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten free bread based</td>
 <td class="gt_row gt_center" headers="stat_1">1 (33%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Gluten-Free Bread Based</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">1 (33%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
@@ -6886,6 +7199,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
 </tr>
 <tr class="even">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie-spple &amp; pecan</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -6894,10 +7208,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
-</tr>
-<tr class="odd">
+=======
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pie is dessert</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -6906,12 +7217,40 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="odd">
+<<<<<<< Updated upstream
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pie is dessert</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">1 (5.3%)</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie is the dessert</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+>>>>>>> Stashed changes
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie is the dessert</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+=======
+<td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pie only</td>
+<td class="gt_row gt_center" headers="stat_1">1 (4.5%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
@@ -6919,17 +7258,29 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pie only</td>
 <td class="gt_row gt_center" headers="stat_1">1 (4.5%)</td>
+=======
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pie-spple &amp; pecan</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<<<<<<< Updated upstream
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+=======
+<td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
@@ -7042,6 +7393,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_9">1 (14%)</td>
 </tr>
 <tr class="odd">
+<<<<<<< Updated upstream
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pies....Look at #8 answer!</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -7050,10 +7402,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
-<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
-</tr>
-<tr class="even">
+=======
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pies: pumpkin with cie cream vanilla, apple, pecan</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
@@ -7062,6 +7411,30 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
+>>>>>>> Stashed changes
+<td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
+</tr>
+<tr class="even">
+<<<<<<< Updated upstream
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;pies: pumpkin with cie cream vanilla, apple, pecan</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">1 (3.6%)</td>
+=======
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Pies....Look at #8 answer!</td>
+<td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_3">1 (5.3%)</td>
+<td class="gt_row gt_center" headers="stat_4">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_5">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_6">0 (0%)</td>
+<td class="gt_row gt_center" headers="stat_7">0 (0%)</td>
+>>>>>>> Stashed changes
 <td class="gt_row gt_center" headers="stat_8">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_9">0 (0%)</td>
 </tr>
@@ -8302,6 +8675,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 <p>I will now attempt to create the same graph from the article using ggplot(). I will first have to filter by the question “Do you celebrate Thanksgiving” and then use count() to select for the US region and the dished served at Thanksgiving.</p>
 <div class="cell">
+<<<<<<< Updated upstream
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -8315,6 +8689,21 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Main Dish"</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">fill =</span> <span class="st">"Region"</span>) <span class="sc">+</span></span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">`</span><span class="at">US Region</span><span class="st">`</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>popular_dishes_by_region <span class="ot">&lt;-</span> dishes_poll <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Do you celebrate Thanksgiving?</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">US Region</span><span class="st">`</span>, <span class="st">`</span><span class="at">What is typically the main dish at your Thanksgiving dinner?</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">US Region</span><span class="st">`</span>, <span class="fu">desc</span>(n))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(popular_dishes_by_region, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(<span class="st">`</span><span class="at">What is typically the main dish at your Thanksgiving dinner?</span><span class="st">`</span>, n), <span class="at">y =</span> n, <span class="at">fill =</span> <span class="st">`</span><span class="at">US Region</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Main Dish"</span>, <span class="at">y =</span> <span class="st">"Count"</span>, <span class="at">fill =</span> <span class="st">"Region"</span>) <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">`</span><span class="at">US Region</span><span class="st">`</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> Stashed changes
 <div class="cell-output-display">
 <div>
 <figure class="figure">
