@@ -185,7 +185,7 @@ predictions <- predict(log_model1, newdata = dc5, type = "response")
 
 bin_pred <-if_else(predictions > 0.5,1,0)
 truth <- factor(dc5$SEX, levels = c(0,1))
-estimate <- factor(binary_predictions, levels = c(0,1))
+estimate <- factor(bin_pred, levels = c(0,1))
 
 model_metrics <- tibble(truth = truth, estimate = estimate)
 
@@ -243,6 +243,7 @@ data_split <- initial_split(dc5, prop = 3/4) # 3/4 of the data into the training
 train_data <- training(data_split)
 test_data  <- testing(data_split)
 
+## Model Assessment 1
 # Now I will try to create a linear regression model that predicts outcome 'Y' based on the variable DOSE.
 dc5_lm2 <- linear_reg() %>%
 set_engine("lm") %>% #learned that all this does is set the linear model to our model 
@@ -296,11 +297,67 @@ print(train_null_metric)
 
 # Now I'm going to evaluate lm2 and lm3 models using a 10-fold cross validation. Had to use ChatGPT to help me code for this section.
 
+# First, I'm going to use the model with only DOSE as a predictor
 set.seed(rngseed)
 
 # Set the cross-validation folds = 10
 folds <- vfold_cv(train_data, v =10)
 
+linear_mod <- linear_reg() %>%
+  set_engine("lm")
+
+linear_wf <- workflow() %>%
+  add_model(linear_mod) %>%
+  add_formula(Y~DOSE)
+
+# Create resampling
+dose_re <- fit_resamples(linear_wf, resample = folds)
+collect_metrics(dose_re)
+
+# Second, I'm going to use the model with the remaining variables as predictors
+set.seed(rngseed)
+
+linear_wf_remain <- workflow() %>%
+  add_model(linear_mod) %>%
+  add_formula(Y ~ .) 
+
+remain_re <- fit_resamples(linear_wf_remain, resamples = folds)
+collect_metrics(remain_re)
+
+#the model that uses all remaining variables as predictors performed better
+
+
+# This time I will run the CV fits again using a different seed
+
+set.seed(5480) 
+
+folds2 <- vfold_cv(train_data, v =10)
+
+linear_mod2 <- linear_reg() %>%
+  set_engine("lm")
+
+# For the DOSE = predictor model
+linear_wf2 <- workflow() %>%
+  add_model(linear_mod2) %>%
+  add_formula(Y~DOSE)
+
+dose_re2 <- fit_resamples(linear_wf2, resample = folds2)
+collect_metrics(dose_re2)
+
+dose_re2
+
+# For the variables+ model
+
+set.seed(5480)
+
+linear_wf_remain2 <- workflow() %>%
+  add_model(linear_mod2) %>%
+  add_formula(Y ~ .) 
+
+remain_re2 <- fit_resamples(linear_wf_remain2, resamples = folds2)
+collect_metrics(remain_re2)
+
+remain_re2
 
 ```
 ```

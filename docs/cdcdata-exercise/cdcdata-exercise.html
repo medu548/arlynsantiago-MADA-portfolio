@@ -432,7 +432,7 @@ dbl (5): Percent, Denominator, Date Order, Race Sort Order, Figure_ID
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr) </span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#BlackLivesMatter</code></pre>
+<pre><code>#StandWithUkraine</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr) </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) </span>
@@ -1168,21 +1168,21 @@ $m
 
 $syn
                       Race.and.Ethnicity total_denom total_numerator
-1                        Hispanic/Latino        4965        2808.096
-2                        Hispanic/Latino      117686       21014.185
-3                     Multiple/Other, NH       32793        3135.485
-4                        Hispanic/Latino        4965       21014.185
-5                              White, NH      285998       25439.054
-6    American Indian / Alaska Native, NH      285998        3135.485
-7 Native Hawaiian / Pacific Islander, NH      117686         472.075
+1    American Indian / Alaska Native, NH      117686       21014.185
+2    American Indian / Alaska Native, NH        4965       25439.054
+3    American Indian / Alaska Native, NH       32793        2808.096
+4                              Asian, NH      285998       14836.168
+5    American Indian / Alaska Native, NH      243504       25439.054
+6                        Hispanic/Latino        4965       21014.185
+7 Native Hawaiian / Pacific Islander, NH       60360         472.075
   overall_percent
-1        8.563096
-2        9.508056
-3        9.508056
+1        9.508056
+2        5.194640
+3       12.606570
 4        8.563096
-5        9.508056
-6       10.447078
-7       12.606570
+5        5.194640
+6        9.508056
+7        7.347669
 
 $method
 Race.and.Ethnicity        total_denom    total_numerator    overall_percent 
@@ -1215,19 +1215,19 @@ Number of synthesised data sets:
 First rows of synthesised data set: 
 ($syn)
                    Race.and.Ethnicity total_denom total_numerator
-1                     Hispanic/Latino        4965        2808.096
-2                     Hispanic/Latino      117686       21014.185
-3                  Multiple/Other, NH       32793        3135.485
-4                     Hispanic/Latino        4965       21014.185
-5                           White, NH      285998       25439.054
-6 American Indian / Alaska Native, NH      285998        3135.485
+1 American Indian / Alaska Native, NH      117686       21014.185
+2 American Indian / Alaska Native, NH        4965       25439.054
+3 American Indian / Alaska Native, NH       32793        2808.096
+4                           Asian, NH      285998       14836.168
+5 American Indian / Alaska Native, NH      243504       25439.054
+6                     Hispanic/Latino        4965       21014.185
   overall_percent
-1        8.563096
-2        9.508056
-3        9.508056
+1        9.508056
+2        5.194640
+3       12.606570
 4        8.563096
-5        9.508056
-6       10.447078
+5        5.194640
+6        9.508056
 ...
 
 Synthesising methods: 
@@ -1264,7 +1264,7 @@ Warning: You are creating tables with 5 cells from 7 observations.
 Results from sparse tables may be unreliable.
 Warning: You are creating tables with 5 cells from 7 observations.
 Results from sparse tables may be unreliable.
-Warning: You are creating tables with 4 cells from 7 observations.
+Warning: You are creating tables with 5 cells from 7 observations.
 Results from sparse tables may be unreliable.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1282,10 +1282,10 @@ Comparing percentages observed with synthetic</code></pre>
 <pre><code>
 Selected utility measures:
                        pMSE   S_pMSE df
-Race.and.Ethnicity 0.053571 1.000000  6
-total_denom        0.045238 1.266667  4
-total_numerator    0.033333 0.933333  4
-overall_percent    0.045238 1.688889  3</code></pre>
+Race.and.Ethnicity 0.085714 1.600000  6
+total_denom        0.021429 0.600000  4
+total_numerator    0.023810 0.666667  4
+overall_percent    0.011905 0.333333  4</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2398,21 +2398,21 @@ $m
 
 $syn
                       Race.and.Ethnicity total_denom total_numerator
-1                              White, NH       32793        3135.485
-2                              Black, NH        2598       21014.185
-3                              Black, NH       32793       25439.054
-4                              Asian, NH        2598       25439.054
-5                     Multiple/Other, NH      243504       21014.185
-6                        Hispanic/Latino        2598       21014.185
-7 Native Hawaiian / Pacific Islander, NH       60360        3135.485
+1                              Black, NH       60360        3135.485
+2                              Black, NH        4965       25439.054
+3 Native Hawaiian / Pacific Islander, NH        4965         472.075
+4    American Indian / Alaska Native, NH        2598       14836.168
+5                              Asian, NH      285998        2808.096
+6                     Multiple/Other, NH      243504         263.808
+7 Native Hawaiian / Pacific Islander, NH      117686         472.075
   overall_percent
 1        7.347669
-2        8.563096
-3        9.508056
-4        5.194640
-5       12.606570
-6        5.194640
-7       10.154273
+2       10.447078
+3        8.563096
+4       12.606570
+5       10.447078
+6        7.347669
+7        8.563096
 
 $method
 Race.and.Ethnicity        total_denom    total_numerator    overall_percent 
@@ -2444,13 +2444,20 @@ Number of synthesised data sets:
 
 First rows of synthesised data set: 
 ($syn)
-  Race.and.Ethnicity total_denom total_numerator overall_percent
-1          White, NH       32793        3135.485        7.347669
-2          Black, NH        2598       21014.185        8.563096
-3          Black, NH       32793       25439.054        9.508056
-4          Asian, NH        2598       25439.054        5.194640
-5 Multiple/Other, NH      243504       21014.185       12.606570
-6    Hispanic/Latino        2598       21014.185        5.194640
+                      Race.and.Ethnicity total_denom total_numerator
+1                              Black, NH       60360        3135.485
+2                              Black, NH        4965       25439.054
+3 Native Hawaiian / Pacific Islander, NH        4965         472.075
+4    American Indian / Alaska Native, NH        2598       14836.168
+5                              Asian, NH      285998        2808.096
+6                     Multiple/Other, NH      243504         263.808
+  overall_percent
+1        7.347669
+2       10.447078
+3        8.563096
+4       12.606570
+5       10.447078
+6        7.347669
 ...
 
 Synthesising methods: 
@@ -2483,7 +2490,7 @@ overall_percent                  0</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Warning: You are creating tables with 7 cells from 7 observations.
 Results from sparse tables may be unreliable.
-Warning: You are creating tables with 4 cells from 7 observations.
+Warning: You are creating tables with 5 cells from 7 observations.
 Results from sparse tables may be unreliable.
 Warning: You are creating tables with 5 cells from 7 observations.
 Results from sparse tables may be unreliable.
@@ -2505,10 +2512,10 @@ Comparing percentages observed with synthetic</code></pre>
 <pre><code>
 Selected utility measures:
                        pMSE   S_pMSE df
-Race.and.Ethnicity 0.023810 0.444444  6
-total_denom        0.021429 0.800000  3
-total_numerator    0.101190 2.833333  4
-overall_percent    0.011905 0.333333  4</code></pre>
+Race.and.Ethnicity 0.047619 0.888889  6
+total_denom        0.000000 0.000000  4
+total_numerator    0.011905 0.333333  4
+overall_percent    0.045238 1.266667  4</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
