@@ -18,7 +18,7 @@ library(stringr)
 # Load the dataset using file.choose()
 
 ```{r}
-model_data <- read.csv("/Users/valeriasantiago/Documents/arlynsantiago-MADA-portfolio/fitting-exercise/Mavoglurant_A2121_nmpk.csv")
+model_data <- read.csv(here("fitting-exercise", "Mavoglurant_A2121_nmpk.csv"))
 ```
 
 # Check dataset using nrow() and ncol()
@@ -360,7 +360,122 @@ collect_metrics(remain_re2)
 remain_re2
 
 ```
+#THIS SECTION ADDED BY KEVIN KOSEWICK
+
+Now, we'll create some visuals to compare our observed vs. predicted values for the first 3 models we fit without CV. To do so, we need to first combine them into one dataframe with labels to differentiate which values belong to each model. The base code was generated with help from Microsoft Copilot in Precise mode and modified to the specifics of the set.
+
+```{r}
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+
+# Add model labels
+dc5_lm2_pred <- dc5_lm2_pred %>% mutate(model = "Model 1")
+dc5_lm3_pred <- dc5_lm3_pred %>% mutate(model = "Model 2")
+
+# Add model label for null model
+train_null_pred <- train_null %>% 
+  predict(train_data) %>% 
+  bind_cols(train_data) %>%
+  mutate(model = "Null Model")
+
+# Combine the null model data frame with the other models
+combined_data <- bind_rows(dc5_lm2_pred, dc5_lm3_pred, train_null_pred)
+
+# Rename the columns for clarity
+names(combined_data)[names(combined_data) == ".pred"] <- "Predicted"
+names(combined_data)[names(combined_data) == "Y"] <- "Observed"
+
+# Create the plot
+ggplot(combined_data, aes(x = Observed, y = Predicted, color = model)) +
+  geom_point() +
+  scale_x_continuous(limits = c(0, 5000)) +
+  scale_y_continuous(limits = c(0, 5000)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "black") +
+  theme_minimal() +
+  labs(title = "Observed vs Predicted Values", x = "Observed", y = "Predicted", color = "Model") +
+  theme(legend.position = "bottom")
+
+```
+We can see that Model 1, which only used DOSE as a predictor, has 3 distinct horizontal lines. This would be due to the 3 different dose levels in the dataset; the lowest dose is at the bottom of the graph while the highest is at the top. The null model just cuts straight across the middle, which is to be expected since the "predicted" values are just copies of the observed ones. Model 2 looks the best, but isn't perfect, as we can see some patterns in the distribution. We'll now plot the residuals for Model 2 with help from Microsoft Copilot again.
+
+```{r}
+# Calculate residuals
+dc5_lm3_pred <- dc5_lm3_pred %>% mutate(Residuals = Y - .pred)
+
+# Create the plot
+ggplot(dc5_lm3_pred, aes(x = .pred, y = Residuals)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  coord_cartesian(ylim = c(min(dc5_lm3_pred$Residuals), abs(min(dc5_lm3_pred$Residuals)))) +
+  theme_minimal() +
+  labs(title = "Predicted vs Residuals", x = "Predicted", y = "Residuals")
+
+
+```
+We see that there are more and higher negative values than our positive values. We'll evaluate the uncertainty in the model by bootstrapping to further evaluate the weaknesses of our model.
+
+```{r}
+#Reset the random seed to the same value as before
+set.seed(rngseed)
+
+# Load necessary library
+library(rsample)
+
+# Create 100 bootstrap samples
+bootstraps <- bootstraps(train_data, times = 100)
+
+# Initialize a data frame to store predictions
+predictions_df <- data.frame()
+
+# Loop over each bootstrap sample
+for(i in 1:100) {
+  # Extract the bootstrap sample
+  bootstrap_sample <- analysis(bootstraps$splits[[i]])
+  
+  # Define a new model structure
+  model <- linear_reg() %>% 
+    set_engine("lm") %>%
+    set_mode("regression")
+  
+  # Fit the model to the bootstrap sample
+  fitted_model <- model %>% 
+    fit(Y ~ ., data = bootstrap_sample)
+  
+  # Make predictions for the original training data
+  predictions <- predict(fitted_model, new_data = train_data)
+  
+  # Store the predictions and observed values in the data frame
+  predictions_df <- rbind(predictions_df, data.frame(Observed = train_data$Y, Predicted = predictions$.pred, Model = paste("Bootstrap", i)))
+}
+
 ```
 
+Now that we've created bootstrap predictions and stored them, we can create some visuals.
 
+```{r}
+# Add observed values to the predictions data frame
+predictions_df$Observed <- rep(train_data$Y, times = 100)
 
+# Compute the median and 89% confidence intervals
+preds <- sapply(split(predictions_df$Predicted, predictions_df$Observed), function(x) quantile(x, c(0.055, 0.5, 0.945)))
+
+# Convert to a data frame
+preds_df <- as.data.frame(t(preds))
+names(preds_df) <- c("Lower", "Median", "Upper")
+
+# Add observed values to the data frame
+preds_df$Observed <- as.numeric(rownames(preds_df))
+
+# Create the plot
+ggplot(preds_df, aes(x = Observed)) +
+  geom_point(aes(y = Median), color = "blue") +
+  geom_errorbar(aes(ymin = Lower, ymax = Upper), color = "red") +
+  geom_point(aes(y = dc5_lm3_pred$.pred), color = "black") +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "black") +
+  coord_equal() +
+  theme_minimal() +
+  labs(title = "Observed vs Predicted Values", x = "Observed", y = "Predicted")
+
+```
+The black dots are the predictions from the original model on the training data. The blue points are the median predictions from the bootstrap samples. The red lines are the 89% confidence intervals for the predictions. There's a pretty large spread around the line, which indicates that there may be a good amount of error in the mode'ls predictions. Most of the black points tend to fall decently far above or below the line, indicating a poor fit from the original model on our training data. While some of the confidence interval lines indicate that a few of our median predictions are close to the line, the majority of them still fall above the line, indicating underpredicting.
