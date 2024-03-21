@@ -187,9 +187,9 @@ bin_pred <-if_else(predictions > 0.5,1,0)
 truth <- factor(dc5$SEX, levels = c(0,1))
 estimate <- factor(binary_predictions, levels = c(0,1))
 
-tibble_metrics <- tibble(truth = truth, estimate = estimate)
+model_metrics <- tibble(truth = truth, estimate = estimate)
 
-test_accuracy <- yardstick::accuracy(data = tibble_metrics, truth = truth, estimate = estimate) # learned that yardstick is a cool tool that kind of does the work for you using tidymodels
+test_accuracy <- yardstick::accuracy(data = model_metrics, truth = truth, estimate = estimate) # learned that yardstick is a cool tool that kind of does the work for you using tidymodels
 
 # Obtain pred probabilities from log_model1
 predicted_prob <- predict(log_model1, type = "response")
@@ -220,6 +220,57 @@ tibble_metrics2 <- tibble(truth = dc5$SEX, estimate = as.factor(pred_bin))
 
 probs_roc_curve2 <- roc(dc5$SEX, pred_bin2)
 probs_auc_curve2 <- auc(probs_roc_curve2)
+```
+
+# Exercise 10
+
+Creating predictions for the last two models using another method. The first model will use the DOSE variable as a predictor, and the second model will include all the remaining predictors. 
+```{r}
+# Create random numbers by using set.seed from tidymodels example
+rngseed = 1234
+set.seed(rngseed)
+
+dc5 <- dc5 %>%
+  select(Y, DOSE, AGE, SEX, WT, HT) # Select only the specified variables w/o Race
+
+# See is it worked
+str(dc5)
+
+# Create training data, wish me luck
+data_split <- initial_split(dc5, prop = 3/4) # 3/4 of the data into the training set 
+
+# Create dataframes for the two sets:
+train_data <- training(data_split)
+test_data  <- testing(data_split)
+
+# Now I will try to create a linear regression model that predicts outcome 'Y' based on the variable DOSE.
+dc5_lm2 <- linear_reg() %>%
+set_engine("lm") %>% #learned that all this does is set the linear model to our model 
+set_mode("regression") %>% #replaces glm step
+fit(Y ~ DOSE, data = train_data)
+
+tidy(dc5_lm2) #supposed to organize the results into a table with summary stat values
+
+# Create predictions for DOSE model above
+dc5_lm2_pred <- predict(dc5_lm2, new_data = train_data)
+
+# Combine predicted values with observed
+dc5_lm2_pred <- bind_cols(dc5_lm2_pred, train_data)
+
+# Create metrics
+library(caret)
+lm2_metric <- rmse(dc5_lm2_pred, truth = Y, estimate = .pred) # now I don't have to do it by hand
+
+# Creating a linear regression model that predicts 'Y' using the remaining variables as predictors 
+dc5_lm3 <- linear_reg() %>% 
+set_engine("lm") %>%
+set_mode("regression") %>%
+fit(Y ~ ., data = train_data) # I learned you use the . to symbolize all the variables
+
+tidy(dc5_lm3)
+
+
+```
 ```
 
 
