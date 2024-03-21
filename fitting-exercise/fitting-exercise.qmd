@@ -260,6 +260,7 @@ dc5_lm2_pred <- bind_cols(dc5_lm2_pred, train_data)
 # Create metrics
 library(caret)
 lm2_metric <- rmse(dc5_lm2_pred, truth = Y, estimate = .pred) # now I don't have to do it by hand
+# rmse = 702
 
 # Creating a linear regression model that predicts 'Y' using the remaining variables as predictors 
 dc5_lm3 <- linear_reg() %>% 
@@ -268,6 +269,37 @@ set_mode("regression") %>%
 fit(Y ~ ., data = train_data) # I learned you use the . to symbolize all the variables
 
 tidy(dc5_lm3)
+
+# Create a prediction from the dataframe of this model with all the other variables
+dc5_lm3_pred <- predict(dc5_lm3, new_data = train_data)
+
+# Combine predicted with observed
+dc5_lm3_pred <- bind_cols(dc5_lm3_pred, train_data) 
+
+# Create the metrics for this model
+lm3_metric <- rmse(dc5_lm3_pred, truth = Y, estimate = .pred)
+# rmse = 627
+
+# Creating the null model and calculating RMSE
+train_null <- null_model(mode = "regression") %>%
+  set_engine("parsnip") %>% #had to look this one up 
+  fit(Y ~ 1, data = train_data)
+
+train_null_metric <- train_null %>% 
+  predict(train_data) %>% 
+  bind_cols(train_data) %>%
+  metrics(truth = Y, estimate = .pred)
+print(train_null_metric)
+# lm3 performed better
+
+## Model Performance Assessment 2
+
+# Now I'm going to evaluate lm2 and lm3 models using a 10-fold cross validation. Had to use ChatGPT to help me code for this section.
+
+set.seed(rngseed)
+
+# Set the cross-validation folds = 10
+folds <- vfold_cv(train_data, v =10)
 
 
 ```
