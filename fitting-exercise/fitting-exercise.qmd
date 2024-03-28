@@ -495,16 +495,40 @@ print(test_data)
 # Create dataframe for final plot
 
 train_plot <- data_frame(Observed = test_data$Y, Predicted = test_pred$.pred)
+train_plot <- train_plot %>%
+  mutate(train = 1)
 test_plot <- data_frame(Observed = test_data$Y, Predicted = test_pred$.pred)
+test_plot <- test_plot %>%
+  mutate(test = 2)
 final_plot_data <- bind_rows(train_plot, test_plot)
 
-ggplot(final_plot_data, aes(x = Observed, y = Predicted, color = predictions_df)) +
-  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "purple") +
-  scale_color_manual(values = c("Training" = "black", "Test" = "pink")) +
-  labs(x = "Observed Values", y = "Predicted Values", title = "Predicted vs Observed Values") +
+final_plot_data <- final_plot_data %>%
+  mutate(grouping = case_when(train == 1 ~ "Training",
+                              test == 2 ~ "Test")) %>%
+  select(Observed,
+         Predicted,
+         grouping)
+
+testing <- final_plot_data %>%
+  ggplot(mapping = aes(x = Observed,
+                       y = Predicted,
+                       color = grouping)) +
+  geom_point() +
+  geom_abline(intercept = 0,
+              slope = 1,
+              linetype = "dashed",
+              color = "purple") +
+  scale_color_manual(values = c("Training" = "black",
+                                "Test" = "pink")) +
+  labs(x = "Observed Values",
+       y = "Predicted Values",
+       title = "Predicted vs Observed Values") +
   theme_minimal() +
-  xlim(0, 5000) +
-  ylim(0, 5000)
+  xlim(0,
+       5000) +
+  ylim(0,
+       5000)
+testing
 
 ```
 Overall, it would appear that the model with all the variables as predictors (Model 2) has the better fit compared to the model only Dose was used as a predictor. This was initially determined by comparing the RMSEs between both models and including a null model as reference. Cross-validation was used to assess for how well a model will perform on data it hasn't been trained on before. This was why the data was split into 75% of that data going into the train_data vector and the remaining 25% going into the test_data vector. Another method that was done to test our model was to use the Bootstrap methods with 100 samples. Model 2 performed relatively well when using bootstrap method. Lastly, the final part of this exercise was to fit the model for our test data. 
