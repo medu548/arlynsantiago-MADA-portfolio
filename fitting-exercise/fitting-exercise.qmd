@@ -214,7 +214,7 @@ pred_bin2 <- if_else(predicted_probs2 > 0.5, 1,0)
 # So it was at this moment that I kept recieving errors and after using the internet and friendly help, I realized I forgot to convert SEX to not only a factor, but a binary (numeric) factor
 
 dc5$SEX <- as.factor(if_else(dc5$SEX == 1,0,1))
-pred_bin <- factor(pred_bin2) # now I have to assign SEX back to pred_bin2 but its the same set as above. I Asked for help on this 
+pred_bin <- factor(pred_bin2) # now I have to assign SEX back to pred_bin2 but its the same set as above. I asked for help on this 
 
 tibble_metrics2 <- tibble(truth = dc5$SEX, estimate = as.factor(pred_bin))
 
@@ -511,4 +511,7 @@ Overall, it would appear that the model with all the variables as predictors (Mo
 
 Model 2 with all variables as predictors seems to be the best model without much overfitting. There were some inconsistenices when measuring RMSE when using the Null model, perhaps it would be better to use other metrics such as MAE or R^2 in the future, 
 
-
+## Saving code as an RDS file
+```{r}
+saveRDS(dc5, "clean_data.rds")
+```
