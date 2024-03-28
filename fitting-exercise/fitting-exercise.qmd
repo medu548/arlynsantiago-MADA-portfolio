@@ -510,3 +510,5 @@ ggplot(final_plot_data, aes(x = Observed, y = Predicted, color = predictions_df)
 Overall, it would appear that the model with all the variables as predictors (Model 2) has the better fit compared to the model only Dose was used as a predictor. This was initially determined by comparing the RMSEs between both models and including a null model as reference. Cross-validation was used to assess for how well a model will perform on data it hasn't been trained on before. This was why the data was split into 75% of that data going into the train_data vector and the remaining 25% going into the test_data vector. Another method that was done to test our model was to use the Bootstrap methods with 100 samples. Model 2 performed relatively well when using bootstrap method. Lastly, the final part of this exercise was to fit the model for our test data. 
 
 Model 2 with all variables as predictors seems to be the best model without much overfitting. There were some inconsistenices when measuring RMSE when using the Null model, perhaps it would be better to use other metrics such as MAE or R^2 in the future, 
+
+
