@@ -4,60 +4,114 @@ title: "Presentation Exercise"
 
 ## Data visualization
 
-For this exercise I chose a graph from the "Here’s What Your Part Of America Eats On Thanksgiving" article from FiveThirtyEight (<https://fivethirtyeight.com/features/heres-what-your-part-of-america-eats-on-thanksgiving/>). The graph displays the side dishes commonly consumed per region in the United States on Thanksgiving. I used the RTutor AI online tool to make the graph more similar the original one.
+For this exercise I chose a graph from the "Hip-Hop Is Turning On Donald Trump" article by Allison McCann from FiveThirtyEight (<https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/>). The graph displays whether the references about presidential candidates in music were classified as positive, negative, or neutral. For example, “I’m rich just like Donald Trump” received a classification of “positive.” “Negative” classifications went to those that were explicitly derogatory or misogynistic/sexist such as “Never put your trust in Hillary Rodham”. References that didn’t express an opinion were classified as "neutral".
 
 This is the original graph from the article:
 
-![Caption](side-dish.webp)\
+![Caption](Reference.png)\
 
 ```{r}
+# loading the libraries I might need
 library(tidyverse)
 library(scales)
 library(here)
 library(readr)
 library(ggplot2)
-
-dishes_poll <- read_csv(here("presentation-exercise","thanksgiving-2015-poll-data.csv"))
-
-str(dishes_poll) #I used str() to see what the dataset looked like once I loaded it into RStudio
-
-```
-
-Most of the variables are character variables. There are 1058 observations and 65 variables in this dataset.
-
-I will first create a column related to side dishes response, filter out NA values, and then attempt to create a table. I had to create a seperate column because after many attempts I realized each dish had its own column which isn't efficient for 1050 observations to pick from. 
-
-```{r}
-dishes_poll_dif <- dishes_poll %>%
-  unite("side_dish", 12:26, sep =',',na.rm = TRUE)
-
-side_dishes_columns <- grep("Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply.", names(dishes_poll), value = TRUE)
-
-
-tab1 <- dishes_poll %>%
-  count('US Region', 'Which of these side dishes aretypically served at your Thanksgiving dinner? Please select all that apply. - Brussel sprouts`== "Brussel sprouts"')
-
-gtsummary::tbl_summary(dishes_poll,
-                       by = `US Region`)
-```
-
-I will now attempt to create the same graph from the article using ggplot(). I will first have to filter by the question "Do you celebrate Thanksgiving" and then use count() to select for the US region and the dished served at Thanksgiving. 
-
-```{r}
 library(dplyr)
-library(ggplot2)
 
-popular_dishes_by_region <- dishes_poll %>%
-  filter(`Do you celebrate Thanksgiving?` == "Yes") %>%
-  count(`US Region`, `What is typically the main dish at your Thanksgiving dinner?`) %>%
-  arrange(`US Region`, desc(n))
+# loading the data 
+lyric_data <- read_csv(here("presentation-exercise","genius_hip_hop_lyrics.csv")) 
 
-ggplot(popular_dishes_by_region, aes(x = reorder(`What is typically the main dish at your Thanksgiving dinner?`, n), y = n, fill = `US Region`)) +
-  geom_bar(stat = "identity") +
-  labs(x = "Main Dish", y = "Count", fill = "Region") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  facet_wrap(~`US Region`, scales = "free_y")
+# to visualize structure of dataset
+str(lyric_data) 
 
 ```
 
-This is honestly the best I could do, I'm not sure how the author was able to group all these graphs so neatly into one.
+```{r}
+
+# Convert album_release_date to a date format and extract the year
+lyric_data$year <- format(as.Date(as.character(lyric_data$album_release_date), format = "%Y"), "%Y")
+
+# Calculate the count and then percentage of each sentiment per year
+percent_summary <- lyric_data %>%
+  group_by(year, sentiment) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  mutate(total = sum(count), percentage = (count / total) * 100)
+
+# Create the scatter plot 
+ggplot(percent_summary, aes(x = year, y = percentage, color = sentiment)) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) +
+  labs(title = "Percentage of Sentiment by Year", x = "Year",y = "Percentage", color = "Sentiment") +
+  theme_minimal()
+# I had an issue where the x-axis labels were too congested so I rotated them 90 degress by following the code written on https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
+```
+
+```{r}
+# Convert album_release_date to a two-digit year format
+lyric_data$year <- format(as.Date(as.character(lyric_data$album_release_date), format = "%Y"), "%y")
+lyric_data$year <- paste0("'", lyric_data$year) # not really sure what this means used chatGPT on this part
+
+# Create a scatterplot second attempt
+ggplot(lyric_data, aes(x = year, y = sentiment, color = candidate)) +
+  geom_point() +
+  labs(x = "Year", y = "Percent", title = "Sentiment Analysis by Candidate By Year") +
+  theme_minimal() +
+  scale_color_discrete(name = "Candidate")
+
+```
+
+```{r}
+#I will now try to create a table of the percentage of each sentiment within the lyric_data dataset
+
+# Percent needs to be calculated as the percentage of each sentiment per year and candidate
+percent_count <- lyric_data %>%
+  group_by(year, candidate, sentiment) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  mutate(total = sum(count), percent = (count / total) * 100)
+
+percent_count <-factor(lyric_data$sentiment)
+
+# I will use table1 to create a table
+library(table1) 
+percent_count_table <- table1(~ percent_count | sentiment, data=lyric_data)
+percent_count_table # just focus on overall
+
+```
+
+Now to create individual scatterplots with the different classifications...
+
+```{r}
+# Convert album_release_date to a two-digit year format
+lyric_data$year <- format(as.Date(as.character(lyric_data$album_release_date), format = "%Y"), "%y")
+lyric_data$year <- paste0("'", lyric_data$year)
+
+percent_count2 <- lyric_data %>%
+  group_by(year, candidate, sentiment) %>%
+  summarise(count = n(), .groups = 'drop') %>%
+  mutate(total = sum(count), percent = (count / total) * 100)
+
+
+# Define custom colors for candidates
+candidate_colors <- c("Donald Trump" = "orange", 
+                      "Hillary Clinton" = "lightblue", 
+                      "Jeb Bush" = "red", 
+                      "Chris Christie" = "yellow", 
+                      "Mike Huckabee" = "pink", 
+                      "Bernie Sanders" = "green", 
+                      "Ben Carson" = "lightgreen", 
+                      "Ted Cruz" = "lightyellow") #had to choose light yellow because light red was not an option and light pink was too close to pink
+
+
+# Create separate scatterplots for each sentiment and rotate x-axis labels by 90 degrees
+ggplot(percent_count2, aes(x = year, y = percent, color = candidate)) +
+  geom_point() +
+  facet_wrap(~sentiment, scales = "free_y") + # used for free scales...
+  labs(title = "Sentiment Analysis by Candidate By Year", x = "Year", y = "Percent") +
+  theme_minimal() +
+  theme(text = element_text(size = 5)) +
+  scale_color_discrete(name = "Candidate")
+
+```
+
+I think minus the legend colors I came pretty close!
