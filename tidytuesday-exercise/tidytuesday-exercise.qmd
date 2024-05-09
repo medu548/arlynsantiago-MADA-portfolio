@@ -177,7 +177,7 @@ lin_reg <- linear_reg() %>%
 lin_fit <- workflow() %>%
 add_recipe(recipe) %>% 
   add_model(lin_reg) %>%
-  fit(data = train_data)
+  fit(data = lin_fit)
 
 # LASSO Model
 lasso_model <- linear_reg(penalty =  0.1, mixture = 1) %>% 
@@ -187,7 +187,7 @@ lasso_model <- linear_reg(penalty =  0.1, mixture = 1) %>%
 lasso_fit <- workflow() %>%
 add_recipe(recipe) %>% 
   add_model(lasso_model) %>%
-  fit(data = train_data)
+  fit(data = lasso_fit)
 
 
 # Random Forest Model
