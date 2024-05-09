@@ -32,5 +32,5 @@ clean_data <- readRDS(here("ml-models-exercise", "clean_data.rds"))
 
 ```{r}
 # Use mutate so 7 and 88 can = 3 for the variable 'RACE'
-clean_data <- clean_data %>% mutate(RACE = ifelse(RACE %in% c(7,88), 3, RACE))
+
 ```

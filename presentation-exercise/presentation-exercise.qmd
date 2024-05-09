@@ -114,10 +114,10 @@ ggplot(percent_count2, aes(x = year, y = percent, color = candidate)) +
   # tried using scale_x_continuous(limit = c(as.Date(1990), as.Date(1995), as.Date(2000), as.Date(2005), as.Date(2010), as.Date(2015))) + to select for specific year but did not work
   
   theme_minimal() +
-  theme(text = element_text(size = 3, angle = 90)) +
+  theme(axis.text.x = element_text(size = 3, angle = 90)) +
   scale_color_discrete(name = "Candidate")
 
 
 ```
 
-I think minus the legend colors I came pretty close!
+I think minus the x-axis label size and colors I came pretty close!
