@@ -85,7 +85,7 @@ readr::write_csv(
 )
 ```
 
-# Exploratory Data Analysis
+## Exploratory Data Analysis
 ```{r}
 # first I will do summary statistics for the eclipse total in 2024 and the partial eclipse 2024
 
@@ -104,7 +104,7 @@ map_total2024 <- plot_total_2024 <- ggplot() +
   labs(title = "Total Eclipse 2024", size=12) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
-map_total_eclipse2024
+map_total2024
 
 
 map_partial2024 <- ggplot() +
@@ -148,4 +148,53 @@ city_name <- eclipse_total_2024 %>% #piping makes everything easier
   filter(name == answer)
   
 print(city_name)
+```
+
+## Modeling
+
+```{r}
+# Create new dataset
+
+model_data <- eclipse_total_2024 %>% select(lat,lon, eclipse_duration)
+
+# split dataset into 70% training and 30% test
+set.seed(1234) # using set from Module 11
+data_split <- initial_split(model_data, prop = 0.7)
+train_data <- training(data_split)
+test_data <- testing(data_split)
+
+# Creating recipe to use for all models
+recipe <- recipe(eclipse_duration ~ lat +lon, data = train_data) %>% 
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_zv(all_predictors()) %>%
+  step_normalize(all_predictors())
+
+# Linear Model
+lin_reg <- linear_reg() %>% 
+  set_engine("lm") %>%
+  set_model("regression")
+
+lin_fit <- workflow() %>%
+add_recipe(recipe) %>% 
+  add_model(lin_reg) %>%
+  fit(data = train_data)
+
+# LASSO Model
+lasso_model <- linear_reg(penalty =  0.1, mixture = 1) %>% 
+  set_engine("glmnet") %>%
+  set_mode("regression")
+
+lasso_fit <- workflow() %>%
+add_recipe(recipe) %>% 
+  add_model(lasso_model) %>%
+  fit(data = train_data)
+
+
+# Random Forest Model
+rf_model <- rand_forest() %>%
+  set_engine("ranger", seed = rngseed) %>%
+  set_mode("regression")
+  
+ 
+
 ```
